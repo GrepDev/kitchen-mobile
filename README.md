@@ -24,6 +24,6 @@ $ ionic serve -c (Print app console logs to Ionic CLI)
 for more read https://ionicframework.com/docs/cli/serve/
 ``` 
 
-###To run the app on device:
+## To run the app on device:
 1. install DevApp from App store/Play store on your phone.
 2. run ionic serve -c in the app of your choice on your computer and let it finish building. Next, open your iOS or Android device and connect to the same network as your computer (through wifi). Open the DevApp, and you should see your local app show up in the list.
