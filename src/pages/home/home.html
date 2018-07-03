@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar center text-center>
+    <ion-title>
+      Edesia
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding center text-center>
+
+  <div class="logo-wrapper">
+    <ion-title>LOGO</ion-title>
+  </div>
+
+  <div class="login-wrapper">
+    <div class="login-wrapper--local">
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="Email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="local-login-btn">
+        <button ion-button full outline (click)="login()">Log in</button>
+        <button ion-button full color="light" (click)="goToRegister()">Register</button>
+      </div>
+    </div>
+
+    <div class="login-wrapper--3rd-party">
+      <button ion-button full>Facebook</button>
+      <button ion-button full color="danger">Google</button>
+    </div>
+
+  </div>
+
+</ion-content>

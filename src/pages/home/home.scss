@@ -1,0 +1,22 @@
+page-home {
+  .logo-wrapper {
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+  }
+  .login-wrapper {
+    padding: 0 10vw;
+
+    .login-wrapper--local {
+
+      .local-login-btn button{
+        border-right-width: 1px;
+        border-left-width: 1px;
+      }
+    }
+    .login-wrapper--3rd-party {
+      margin-top: 5vh;
+      padding: 0 15vw;
+    }
+  }
+}
+
