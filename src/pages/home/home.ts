@@ -14,11 +14,6 @@ export class HomePage {
 
   }
 
-  login() {
-    console.log("Email: " + this.email);
-    console.log("Email: " + this.password);
-  }
-
   goToRegister() {
     this.navCtrl.push(RegisterPage);
   }
