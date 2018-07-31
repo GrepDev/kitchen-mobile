@@ -11,8 +11,7 @@ import {RegisterPage} from "../pages/register/register";
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    RegisterPage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -21,8 +20,7 @@ import {RegisterPage} from "../pages/register/register";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    RegisterPage
+    HomePage
   ],
   providers: [
     StatusBar,
