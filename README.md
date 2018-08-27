@@ -1,4 +1,4 @@
-## kitchen-mobile
+# kitchen-mobile
 
 install ionic global
 ```
