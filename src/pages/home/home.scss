@@ -1,21 +1,66 @@
+ion-content{
+  background: url('../../assets/imgs/background/food-background3.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.toolbar-background {
+  background-color: #ff7070;
+}
+
+.toolbar-title-md {
+  color: #fff;
+}
+.app-title {
+  margin-left: -20%;
+}
+
 page-home {
-  .logo-wrapper {
-    margin-top: 5vh;
-    margin-bottom: 10vh;
-  }
-  .login-wrapper {
-    padding: 0 10vw;
 
-    .login-wrapper--local {
+  ion-content {
 
-      .local-login-btn button{
-        border-right-width: 1px;
-        border-left-width: 1px;
+    .scroll-content {
+      display: flex;
+      flex-direction: column;
+      padding: 0 !important;
+
+      .logo-wrapper {
+        flex: 5;
       }
-    }
-    .login-wrapper--3rd-party {
-      margin-top: 5vh;
-      padding: 0 15vw;
+      .action-wrapper {
+        flex: 5;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+
+        .section-1-wrapper {
+          flex: 1;
+          width: 65%;
+          ion-input {
+            border: 2px #fff solid;
+            border-radius: 2em;
+            input {
+              margin: 10px 8px;
+              color: #fff;
+            }
+          }
+        }
+        .section-2-wrapper {
+          display: flex;
+          width: 100%;
+
+          .left-btn {
+            flex: 5;
+            padding: 15% 0;
+            margin: 0;
+            background-color: #ff7070;
+          }
+          .right-btn {
+            flex: 5;
+            padding: 15% 0;
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }
