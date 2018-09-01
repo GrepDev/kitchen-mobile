@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {RegisterPage} from "../register/register";
+import { IngredientsPage } from '../ingredients/ingredients';
 
 @Component({
   selector: 'page-home',
@@ -16,6 +17,10 @@ export class HomePage {
 
   goToRegister() {
     this.navCtrl.push(RegisterPage);
+  }
+
+  goToIngredients() {
+    this.navCtrl.push(IngredientsPage);
   }
 
 }

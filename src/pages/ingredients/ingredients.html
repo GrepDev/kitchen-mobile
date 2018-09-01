@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Add your ingredients</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-toolbar>
+        <ion-searchbar
+        placeholder="Search for some ingredients to start the recipe"
+        autocomplete="on"
+        debounce="1000"
+        animated="true"
+        [(ngModel)]="queryText"
+        (ionInput)="callIngredientsEndpoint()">
+      </ion-searchbar>
+    </ion-toolbar>
+
+    <p class="defaultList"> You currently don't have any ingredient added. You can either search for the ingredients that you have in your kitchen, 
+        or those that you want to use in your recipe.</p>
+</ion-content>

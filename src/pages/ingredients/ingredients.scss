@@ -1,0 +1,78 @@
+ion-content{
+  background: url('../../assets/imgs/background/food-background3.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.toolbar-background {
+  background-color: #ff7070;
+}
+
+.toolbar-title-md {
+  color: #fff;
+}
+.app-title {
+  margin-left: -20%;
+}
+
+page-home {
+
+  ion-content {
+
+    .scroll-content {
+      display: flex;
+      flex-direction: column;
+      padding: 0 !important;
+
+      .logo-wrapper {
+        flex: 5;
+      }
+      .action-wrapper {
+        flex: 5;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+
+        .section-1-wrapper {
+          flex: 1;
+          width: 65%;
+          ion-input {
+            border: 2px #fff solid;
+            border-radius: 2em;
+            input {
+              margin: 10px 8px;
+              color: #fff;
+            }
+          }
+        }
+        .section-2-wrapper {
+          display: flex;
+          width: 100%;
+
+          .left-btn {
+            flex: 5;
+            padding: 15% 0;
+            margin: 0;
+            background-color: #ff7070;
+          }
+          .right-btn {
+            flex: 5;
+            padding: 15% 0;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+page-ingredients {
+  .defaultList {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    //text-align-last: center;
+    margin-top: 35%;
+    font-size: 21px;
+  }
+}
+

@@ -21,4 +21,15 @@ export class IngredientsPage {
     console.log('ionViewDidLoad IngredientsPage');
   }
 
+  public queryText: string;
+
+  public allIngredients: string;
+
+  public callIngredientsEndpoint(){
+    let queryTextLower = this.queryText.toLowerCase();
+    let filteredIngredients = [];
+
+
+  }
+
 }
