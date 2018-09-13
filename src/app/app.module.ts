@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
@@ -18,7 +19,9 @@ import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

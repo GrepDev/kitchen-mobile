@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EdamamApiProvider } from '../../providers/edamam-api/edamam-api';
+import { HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 /**
  * Generated class for the RegisterPage page.
@@ -14,22 +17,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class IngredientsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private food;
+
+  public getFood(){
+    return this.food;
+  }
+
+  public sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
+  private nullMessage: string = "Search for an ingredient first";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider:EdamamApiProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IngredientsPage');
   }
 
-  public queryText: string;
-
-  public allIngredients: string;
-
-  public callIngredientsEndpoint(){
-    let queryTextLower = this.queryText.toLowerCase();
-    let filteredIngredients = [];
-
-
+  getIngredients(ingredient){
+    //console.log("Interogating service");
   }
 
+  addIngredient(ingredient){ 
+    if(ingredient == null){
+      document.getElementById("defaultList").innerHTML = this.nullMessage;
+      return null;
+    }
+    this.edamamApiProvider.getIngredientsData(ingredient).subscribe(data => {
+      this.food = data;
+      document.getElementById("defaultList").innerHTML = this.food;
+    })
+  }
 }
