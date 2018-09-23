@@ -6,17 +6,23 @@
 
 <ion-content padding>
     <ion-toolbar>
-        <ion-searchbar
-        placeholder="Search for some ingredients to start the recipe"
-        autocomplete="on"
-        debounce="1000"
-        animated="true"
-        [(ngModel)]="queryText"
-        (ionInput)="getIngredients(queryText)">
-      </ion-searchbar>
+        <ion-searchbar placeholder="Search for some ingredients to start the recipe" autocomplete="on" debounce="1000" animated="true"
+            [(ngModel)]="queryText" (ionInput)="getIngredients(queryText)">
+        </ion-searchbar>
     </ion-toolbar>
-    <button class="btn" ion-button round (click)="addIngredient(queryText)">Add Ingredient</button> 
-
-    <p class="defaultList" id="defaultList"> You currently don't have any ingredient added. You can either search for the ingredients that you have in your kitchen, 
-        or those that you want to use in your recipe.</p>
+    <button class="btn" ion-button round (click)="getIngredientsData(queryText)">Add Ingredient</button>
+    <p class="defaultList" id="defaultList"> You currently don't have any ingredient added. You can either search for the
+        ingredients that you have in your kitchen, or those that you want to use in your recipe.</p>
+    <div id="ingredientsContainer">
+        <ion-list class="ion-list">
+            <ion-item-sliding *ngFor="let ingredient of food" #slidingItem>
+                <ion-item class="ion-item">
+                    {{ingredient}}
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="danger" (click)="removeItem(ingredient)">Delete</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
 </ion-content>
