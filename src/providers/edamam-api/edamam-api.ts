@@ -19,14 +19,21 @@ export class EdamamApiProvider {
   }
 
   getIngredientsData(ingredients): Observable<any> {
+    console.log('DEBUG: getIngredientsData',ingredients);
     let url = this.ingredientsUrl + encodeURI(ingredients);
     return this.http.get(`${url}`).map(response => {
       this.currentFood = response.json();
-      return this.currentFood.parsed[0].food.label;
+      console.log('DEBUG: getIngredientsData.currentFood',this.currentFood);
+      console.log('DEBUG: getIngredientsData',this.currentFood.parsed);
+      if(this.currentFood.parsed.length > 0)
+        return this.currentFood.parsed[0].food.label;
+      else
+        return "No results";
     })
   }
 
   getIngredientID(ingredientName): Observable<any> {
+    console.log('DEBUG getIngredientID: ',ingredientName);
     let url = this.ingredientsUrl + encodeURI(ingredientName);
     return this.http.get(`${url}`).map(response => {
       this.currentFood = response.json();
