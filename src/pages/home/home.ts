@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {RegisterPage} from "../register/register";
 import { IngredientsPage } from '../ingredients/ingredients';
+import { RecipesPage } from '../recipes/recipes';
 
 @Component({
   selector: 'page-home',
@@ -22,5 +23,7 @@ export class HomePage {
   goToIngredients() {
     this.navCtrl.push(IngredientsPage);
   }
-
+  goToRecipes() {
+    this.navCtrl.push(RecipesPage);
+  }
 }

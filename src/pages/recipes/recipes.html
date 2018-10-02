@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>search for recipes</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-toolbar>
+        <ion-searchbar placeholder="Search for some recipes" autocomplete="on" debounce="1000" animated="true"
+            [(ngModel)]="queryText" (ionInput)="getRecipes(queryText)">
+        </ion-searchbar>
+    </ion-toolbar>
+    <button class="btn" ion-button round (click)="getRecipesData(queryText)">Add Recipe</button>
+    <p class="defaultList" id="defaultList"> </p>
+    <div id="recipesContainer">
+        <ion-list class="ion-list">
+            <ion-item-sliding *ngFor="let recipe of food" #slidingItem>
+                <ion-item class="ion-item">
+                    {{recipe}}
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="danger" (click)="removeItem(recipe)">Delete</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
+</ion-content>
