@@ -75,7 +75,8 @@ export class RecipesPage {
           return 0;
         }
       }
-      this.food.push(data);
+      if(data.trim().length > 0)
+        this.food.push(data);
     }
     )
     document.getElementById("defaultList").style.visibility = "hidden";
