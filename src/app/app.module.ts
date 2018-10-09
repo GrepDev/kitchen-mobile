@@ -9,13 +9,22 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegisterPage} from "../pages/register/register";
 import { IngredientsPage } from '../pages/ingredients/ingredients';
+<<<<<<< HEAD
+=======
+import { RecipesPage } from '../pages/recipes/recipes';
+>>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
 import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+<<<<<<< HEAD
     IngredientsPage
+=======
+    IngredientsPage,
+    RecipesPage
+>>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,12 @@ import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
   entryComponents: [
     MyApp,
     HomePage,
+<<<<<<< HEAD
     IngredientsPage
+=======
+    IngredientsPage,
+    RecipesPage
+>>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
   ],
   providers: [
     StatusBar,
