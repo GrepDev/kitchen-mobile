@@ -32,6 +32,12 @@ export class IngredientsPage {
 
   private nullIngredientID: string = "Ingredient ID cannot be null";
 
+  private noResults: string = "No results";
+
+  private receivedResponse: string;
+
+  private noResultsFound: string = "No results found! Try refining your search";
+
   private duplicateIngredient: string = "The specified ingredient is already in your list"
 
   private noResponseFromWebService: string = "There was an error retrieving the response from the webservice"
@@ -73,6 +79,12 @@ export class IngredientsPage {
           return 0;
         }
       }
+      this.receivedResponse = data;
+      if(this.receivedResponse == this.noResults) {
+        alert(this.noResultsFound);
+        return 0;
+      }
+
       this.food.push(data);
     }
     )
