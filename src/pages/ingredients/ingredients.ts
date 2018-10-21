@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EdamamApiProvider } from '../../providers/edamam-api/edamam-api';
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -46,7 +47,10 @@ export class IngredientsPage {
     "You can either search for the ingredients that you have in your kitchen, " +
     "or those that you want to use in your recipe."
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider: EdamamApiProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private edamamApiProvider: EdamamApiProvider,
+    private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -67,25 +71,28 @@ export class IngredientsPage {
       return null;
     }
     this.edamamApiProvider.getIngredientsData(ingredient).subscribe(data => {
-      if (data == null) {
+      if (data.label == null) {
         this.sleep(5000)
       }
-      if (data == null) {
+      if (data.label == null) {
         alert(this.noResponseFromWebService);
       }
       for (var i = 0; i < this.food.length; i++) {
-        if (this.food[i] == data) {
+        if (this.food[i] == data.label) {
           alert(this.duplicateIngredient);
           return 0;
         }
       }
+      this.receivedResponse = data.label;
+
       this.receivedResponse = data;
       if(this.receivedResponse == this.noResults) {
         alert(this.noResultsFound);
         return 0;
       }
 
-      this.food.push(data);
+      this.food.push(data.label);
+      this.storage.set(data.foodId, data.label);
     }
     )
     document.getElementById("defaultList").style.visibility = "hidden";
