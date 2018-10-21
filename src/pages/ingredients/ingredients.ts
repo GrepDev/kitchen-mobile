@@ -83,22 +83,16 @@ export class IngredientsPage {
           return 0;
         }
       }
-<<<<<<< HEAD
       this.receivedResponse = data.label;
-=======
+
       this.receivedResponse = data;
->>>>>>> 01258688d49263e4465e87bf5d973556ef131678
       if(this.receivedResponse == this.noResults) {
         alert(this.noResultsFound);
         return 0;
       }
-<<<<<<< HEAD
+
       this.food.push(data.label);
       this.storage.set(data.foodId, data.label);
-=======
-
-      this.food.push(data);
->>>>>>> 01258688d49263e4465e87bf5d973556ef131678
     }
     )
     document.getElementById("defaultList").style.visibility = "hidden";

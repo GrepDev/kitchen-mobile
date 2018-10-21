@@ -8,11 +8,7 @@ export class EdamamApiProvider {
 
   private baseUrl = 'https://api.edamam.com/';
   private ingredientsUrl = 'https://api.edamam.com/api/food-database/parser?app_key=d1bf31a95d67109d48fb02e4b81c3075&app_id=fc8fb72e&ingr=';
-<<<<<<< HEAD
-=======
   private recipesUrl = 'https://api.edamam.com/search?app_id=1d98004b&app_key=ebc588849964cbb0d475489c084fa0e4';
-  
->>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
   private currentFood: any = {};
 
   public getBaseUrl() {
@@ -24,16 +20,6 @@ export class EdamamApiProvider {
   }
 
   getIngredientsData(ingredients): Observable<any> {
-<<<<<<< HEAD
-    let url = this.ingredientsUrl + encodeURI(ingredients);
-    return this.http.get(`${url}`).map(response => {
-      this.currentFood = response.json();
-      return this.currentFood.parsed[0].food.label;
-    })
-  }
-
-  getIngredientID(ingredientName): Observable<any> {
-=======
     console.log('DEBUG: getIngredientsData',ingredients);
     let url = this.ingredientsUrl + encodeURI(ingredients);
     return this.http.get(`${url}`).map(response => {
@@ -68,7 +54,6 @@ export class EdamamApiProvider {
   }
   getIngredientID(ingredientName): Observable<any> {
     console.log('DEBUG getIngredientID: ',ingredientName);
->>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
     let url = this.ingredientsUrl + encodeURI(ingredientName);
     return this.http.get(`${url}`).map(response => {
       this.currentFood = response.json();
