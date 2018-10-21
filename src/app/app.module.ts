@@ -9,45 +9,39 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegisterPage} from "../pages/register/register";
 import { IngredientsPage } from '../pages/ingredients/ingredients';
-<<<<<<< HEAD
-=======
 import { RecipesPage } from '../pages/recipes/recipes';
->>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
 import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
+import { File } from '@ionic-native/file';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-<<<<<<< HEAD
-    IngredientsPage
-=======
     IngredientsPage,
     RecipesPage
->>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-<<<<<<< HEAD
-    IngredientsPage
-=======
     IngredientsPage,
     RecipesPage
->>>>>>> 26edf66bdbc123ccdbfae338742fb65a9b83661b
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    EdamamApiProvider
+    EdamamApiProvider,
+    File,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
