@@ -92,7 +92,7 @@ export class IngredientsPage {
       }
 
       this.food.push(data.label);
-      this.storage.set(data.foodId, data.label);
+      this.storage.set(data.foodId, ingredient);
     }
     )
     document.getElementById("defaultList").style.visibility = "hidden";
