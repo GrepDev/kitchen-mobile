@@ -2,10 +2,10 @@ language: node_js
 node_js:
   - stable
 before_install:
-  - npm i npm@^4 -g
+  - npm i npm@^4 
 install:
   - npm install
 before_script:
-  - npm install -g ionic cordova; cordova platform add android
+  - npm install  ionic cordova; cordova platform add android
 script:
   - ionic cordova build browser android prod
