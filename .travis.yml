@@ -6,6 +6,6 @@ before_install:
 install:
   - npm install
 before_script:
-  - npm install  ionic cordova; cordova platform add android
+  - npm install -g @angular/cli
 script:
-  - ionic cordova build browser android prod
+  - ng test
