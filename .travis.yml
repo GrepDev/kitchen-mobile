@@ -6,6 +6,6 @@ before_install:
 install:
   - npm install
 before_script:
-  - npm install -g @angular/cli
+  - npm install -g @angular/cli; ls -al
 script:
   - ng test
