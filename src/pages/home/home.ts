@@ -19,7 +19,6 @@ export class HomePage {
   goToRegister() {
     this.navCtrl.push(RegisterPage);
   }
-
   goToIngredients() {
     this.navCtrl.push(IngredientsPage);
   }
