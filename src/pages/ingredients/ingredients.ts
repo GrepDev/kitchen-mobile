@@ -54,7 +54,18 @@ export class IngredientsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IngredientsPage');
+
+    this.storage.length().then(result =>{
+      console.log(result);
+      if(result > 0){
+        document.getElementById("defaultList").style.visibility = "hidden";
+        document.getElementById("ingredientsContainer").style.visibility = "visible";
+        this.storage.forEach( (value, key, index) => {
+          console.log("Key is" + key);
+          this.food.push(key);
+        })
+      }
+      });
   }
 
   getIngredients(queryText) {
@@ -90,9 +101,8 @@ export class IngredientsPage {
         alert(this.noResultsFound);
         return 0;
       }
-
       this.food.push(data.label);
-      this.storage.set(data.foodId, ingredient);
+      this.storage.set(data.label, ingredient);
     }
     )
     document.getElementById("defaultList").style.visibility = "hidden";
@@ -102,7 +112,9 @@ export class IngredientsPage {
   removeItem(item) {
     for (var i = 0; i < this.food.length; i++) {
       if (this.food[i] == item) {
+        console.log(item);
         this.food.splice(i, 1);
+        this.storage.remove(item);
       }
     }
   }

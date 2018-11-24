@@ -15,9 +15,13 @@
 <ion-content padding center text-center>
 
   <div class="logo-wrapper" padding>
-    <ion-title padding>LOGO</ion-title>
-    <ion-title padding>Edesia - A food app</ion-title>
-    <h3 style="color: red">Tasty Recipes</h3>
+    <ion-title padding> 
+      <img
+          src="../../assets/imgs/edesia.svg"
+          alt="Logo"
+          height="250"
+          width="250" />
+    </ion-title>
   </div>
 
   <div class="action-wrapper" center text-center>
@@ -26,8 +30,8 @@
     </div>
 
     <div class="section-2-wrapper">
-      <button ion-button class="left-btn"  (click) ="goToIngredients()">Let`s Cook</button>
-      <button ion-button class="right-btn" (click) ="goToRecipes()"color="light" >Recipes</button>
+      <button ion-button class="left-btn"  (click) ="goToIngredients()">Add Ingredients</button>
+      <button ion-button class="right-btn" (click) ="goToRecipes()"color="light" >Get Recipes</button>
     </div>
   </div>
 
