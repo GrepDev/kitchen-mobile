@@ -110,6 +110,7 @@ export class IngredientsPage {
   removeItem(item) {
     for (var i = 0; i < this.food.length; i++) {
       if (this.food[i] == item) {
+        console.log(item);
         this.food.splice(i, 1);
         this.storage.remove(item);
       }
