@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import {RegisterPage} from "../pages/register/register";
+import { HelpPage } from "../pages/help/help";
 import { IngredientsPage } from '../pages/ingredients/ingredients';
 import { RecipesPage } from '../pages/recipes/recipes';
 import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
@@ -19,7 +19,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     HomePage,
     IngredientsPage,
-    RecipesPage
+    RecipesPage,
+    HelpPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     HomePage,
     IngredientsPage,
-    RecipesPage
+    RecipesPage,
+    HelpPage
   ],
   providers: [
     StatusBar,

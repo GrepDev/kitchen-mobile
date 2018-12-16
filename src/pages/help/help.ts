@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { IngredientsPage } from '../ingredients/ingredients';
 
 /**
  * Generated class for the HelpPage page.
@@ -19,6 +20,10 @@ export class HelpPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HelpPage');
+  }
+  
+  goToIngredients() {
+    this.navCtrl.push(IngredientsPage);
   }
 
 }
