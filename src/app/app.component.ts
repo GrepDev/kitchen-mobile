@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { IngredientsPage } from '../pages/ingredients/ingredients';
 import { RecipesPage } from '../pages/recipes/recipes';
 import {App} from 'ionic-angular';
+import { HelpPage } from '../pages/help/help';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,9 @@ export class MyApp {
   }
   goToRecipes() {
     this.app.getRootNav().push(RecipesPage);
+  }
+  goToHelp() {
+    this.app.getRootNav().push(HelpPage);
   }
 }
 

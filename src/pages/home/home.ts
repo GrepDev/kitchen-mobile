@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {RegisterPage} from "../register/register";
+import { HelpPage } from "../help/help";
 import { IngredientsPage } from '../ingredients/ingredients';
 import { RecipesPage } from '../recipes/recipes';
 
@@ -13,11 +13,10 @@ export class HomePage {
   password: string;
 
   constructor(public navCtrl: NavController) {
-
   }
 
   goToRegister() {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push(HelpPage);
   }
   goToIngredients() {
     this.navCtrl.push(IngredientsPage);
