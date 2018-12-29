@@ -22,8 +22,12 @@ import { SQLite } from '@ionic-native/sqlite';
     HomePage,
     IngredientsPage,
     RecipesPage,
+<<<<<<< HEAD
     HelpPage,
     PreferencesPage
+=======
+    HelpPage
+>>>>>>> 9a51fda9e509058793421725c9987548e9f5331b
   ],
   imports: [
     BrowserModule,
@@ -38,8 +42,12 @@ import { SQLite } from '@ionic-native/sqlite';
     HomePage,
     IngredientsPage,
     RecipesPage,
+<<<<<<< HEAD
     HelpPage,
     PreferencesPage
+=======
+    HelpPage
+>>>>>>> 9a51fda9e509058793421725c9987548e9f5331b
   ],
   providers: [
     StatusBar,
