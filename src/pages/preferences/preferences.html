@@ -14,26 +14,26 @@
   
           <h3>Are you: </h3>
 
-          <ion-list>
+          <ion-list class='ion-list'>
 
-            <ion-item>
+            <ion-item class='ion-item'>
               <ion-label>Vegan</ion-label>
               <ion-toggle [(ngModel)]="vegan" (ionChange)="isVegan()"></ion-toggle>
             </ion-item>
           
-            <ion-item>
+            <ion-item class='ion-item'>
               <ion-label>Vegetarian</ion-label>
-              <ion-toggle [(ngModel)]="vegetarian" ></ion-toggle>
+              <ion-toggle [(ngModel)]="vegetarian" (ionChange)="isVegetarian()"></ion-toggle>
             </ion-item>
           
-            <ion-item>
+            <ion-item class='ion-item'>
               <ion-label>Allergic to gluten</ion-label>
-              <ion-toggle [(ngModel)]="gluten" ></ion-toggle>
+              <ion-toggle [(ngModel)]="gluten" (ionChange)="isGlutenFree()"></ion-toggle>
             </ion-item>
             
-            <ion-item>
+            <ion-item class='ion-item'>
                 <ion-label>Lactose intollerant</ion-label>
-                <ion-toggle [(ngModel)]="lactose"></ion-toggle>
+                <ion-toggle [(ngModel)]="lactose" (ionChange)="isLactoseIntollerant()"></ion-toggle>
               </ion-item>
 
           

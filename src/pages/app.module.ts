@@ -13,7 +13,7 @@ import { RecipesPage } from '../pages/recipes/recipes';
 import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
 import { File } from '@ionic-native/file';
 import { IonicStorageModule } from '@ionic/storage';
-import { PreferencesPage } from './preferences/preferences';
+import { PreferencesPage } from '../pages/preferences/preferences';
 import { SQLite } from '@ionic-native/sqlite';
 
 @NgModule({

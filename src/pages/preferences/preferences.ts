@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import localForage from "localforage";
 
 /**
  * Generated class for the RegisterPage page.
@@ -14,37 +14,98 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
   templateUrl: 'preferences.html',
 })
 export class PreferencesPage {
-  public vegan = false;
-  private db : SQLiteObject; 
+  public localStorage: LocalForage; 
+  public veganString: string = "Vegan";
+  public vegetarianString: string = "Vegetarian";
+  public glutenString: string = "Gluten";
+  public lactoseString: string = "Lactose";
+  public falseString: string = "false";
+  public trueString: string = "true";
+  vegan: boolean = false;
+  vegetarian: boolean = false;
+  gluten: boolean = false;
+  lactose: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
+  ionViewWillEnter(){
+    localForage.getItem(this.veganString).then((value)=>{ 
+      if(value == this.trueString){
+      this.vegan = true; }
     })
-      .then((db: SQLiteObject) => {
-    
-    
-        db.executeSql('create table foodPrefs(name VARCHAR(32))', [])
-        db.executeSql('CREATE TABLE PREFS (ID VARCHAR(32), PREFNAME VARCHAR(32), PREFVALUE(32))')
-          .then(() => console.log('Executed SQL'))
-          .catch(e => console.log(e));
-          this.db = db;
-      })
-      .catch(e => console.log(e));
-  }
+    localForage.getItem(this.vegetarianString).then((value)=>{ 
+      if(value == this.trueString){
+      this.vegetarian = true; }
+    })
+    localForage.getItem(this.glutenString).then((value)=>{ 
+      if(value == this.trueString){
+      this.gluten = true; }
+    })
+    localForage.getItem(this.lactoseString).then((value)=>{ 
+      if(value == this.trueString){
+      this.lactose = true; }
+    })
+
+    }
 
   isVegan(){
-    if(this.vegan){
-      this.db.executeSql('insert into foodPrefs (PREFNAME, PREFVALUE) VALUES("Vegan", 1))');
-      console.log('Executed SQL');
+    if(this.vegan == true){
+    localForage.removeItem(this.veganString);
+    localForage.setItem(this.veganString, this.trueString);
+    return 0; 
+  }
+    if(this.vegan == false){
+      localForage.getItem(this.veganString).then((item) => {
+        localForage.removeItem(this.vegetarianString);
+        localForage.setItem(this.veganString, this.falseString );
+      });
+      return 0;
     }
-    else{
-      this.db.executeSql('update foodPrefs SET PREFVALUE=0 where PREFNAME = "Vegan"');
-      console.log('Executed SQL');
+  }
+
+  isVegetarian(){
+    if(this.vegetarian == true){
+    localForage.removeItem(this.vegetarianString);
+    localForage.setItem(this.vegetarianString, this.trueString);
+    return 0; 
+  }
+    if(this.vegetarian == false){
+      localForage.getItem(this.vegetarianString).then((item) => {
+        localForage.removeItem(this.vegetarianString);
+        localForage.setItem(this.vegetarianString, this.falseString );
+      });
+      return 0;
+    }
+  }
+
+  isGlutenFree(){
+    if(this.gluten == true){
+    localForage.removeItem(this.glutenString);
+    localForage.setItem(this.glutenString, this.trueString);
+    return 0; 
+  }
+    if(this.gluten == false){
+      localForage.getItem(this.glutenString).then((item) => {
+        localForage.removeItem(this.glutenString);
+        localForage.setItem(this.glutenString, this.falseString);
+      });
+      return 0;
+    }
+  }
+
+  isLactoseIntollerant(){
+    if(this.lactose == true){
+    localForage.removeItem(this.lactoseString);
+    localForage.setItem(this.lactoseString, this.trueString);
+    return 0; 
+  }
+    if(this.lactose == false){ 
+      localForage.getItem(this.lactoseString).then((item) => {
+        localForage.removeItem(this.lactoseString);
+        localForage.setItem(this.lactoseString, this.falseString);
+      });
+      return 0;
     }
   }
 
