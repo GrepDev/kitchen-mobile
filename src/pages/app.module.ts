@@ -24,7 +24,6 @@ import { SQLite } from '@ionic-native/sqlite';
     RecipesPage,
     HelpPage,
     PreferencesPage
-    HelpPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +40,6 @@ import { SQLite } from '@ionic-native/sqlite';
     RecipesPage,
     HelpPage,
     PreferencesPage
-    HelpPage
   ],
   providers: [
     StatusBar,
@@ -50,7 +48,7 @@ import { SQLite } from '@ionic-native/sqlite';
     EdamamApiProvider,
     File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite  
+    SQLite
   ]
 })
 export class AppModule {}
