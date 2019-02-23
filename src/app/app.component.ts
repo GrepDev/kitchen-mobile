@@ -7,10 +7,7 @@ import { IngredientsPage } from '../pages/ingredients/ingredients';
 import { RecipesPage } from '../pages/recipes/recipes';
 import {App} from 'ionic-angular';
 import { HelpPage } from '../pages/help/help';
-<<<<<<< HEAD
 import { PreferencesPage } from '../pages/preferences/preferences';
-=======
->>>>>>> 9a51fda9e509058793421725c9987548e9f5331b
 
 @Component({
   templateUrl: 'app.html'
@@ -38,11 +35,8 @@ export class MyApp {
   goToHelp() {
     this.app.getRootNav().push(HelpPage);
   }
-<<<<<<< HEAD
   goToPrefs(){
     this.app.getRootNav().push(PreferencesPage);
   }
-=======
->>>>>>> 9a51fda9e509058793421725c9987548e9f5331b
 }
 

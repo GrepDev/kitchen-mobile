@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { EdamamApiProvider } from '../../providers/edamam-api/edamam-api';
-
-
+import { Storage } from '@ionic/storage';
+import localForage from "localforage";
 
 /**
  * Generated class for the RegisterPage page.
@@ -17,70 +17,94 @@ import { EdamamApiProvider } from '../../providers/edamam-api/edamam-api';
 })
 export class RecipesPage {
 
+  public localStorage: LocalForage; 
+
+  private TRUE_STRING = "true";
+
+  public veganString: string = "Vegan";
+
+  public vegetarianString: string = "Vegetarian";
+  
+  public glutenString: string = "Gluten";
+  
+  public lactoseString: string = "Lactose";
+
+  public GLUTEN_STRING_EDAMAM: string = "Gluten-Free";
+
+  public LACTOSE_STRING_EDAMAM: string = "Lactose-Free";
+
+  private vegan: boolean = false;
+
+  private vegetarian: boolean = false;
+  
+  private gluten: boolean = false;
+  
+  private lactose: boolean = false;
+
   private food = [];
 
-  public getFood() {
-    return this.food;
-  }
+  shownGroup = null;
 
-  private foodID;
+  private MAXIMUM_RECIPES = 10;
 
-  public getFoodID() {
-    return this.foodID;
-  }
+  private MAXIMUM_RECIPES_REACHED_MESSAGE = "Maximum recipes reached! Delete some recipes to receive others."
 
-  private nullMessage: string = "Search for an ingredient first";
+  private initialRecipeRequest;
 
-  private nullIngredientID: string = "Ingredient ID cannot be null";
+  private currentIngredients = [];
 
-  private duplicateIngredient: string = "The specified ingredient is already in your list"
+  private lastCharsSlice = -2;
 
-  private noResponseFromWebService: string = "There was an error retrieving the response from the webservice"
+  private firstCharsSlice = 0;
 
-  private noIngredientInTheList: string = "You currently don't have any ingredient added." +
-    "You can either search for the ingredients that you have in your kitchen, " +
-    "or those that you want to use in your recipe."
+  private requestString;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider: EdamamApiProvider) {
+  private duplicateRecipe: string = "Some of the retrieved recipes are already in your list";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider: EdamamApiProvider, public storage: Storage) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IngredientsPage');
+    this.getPreferencesFromStorage();
+
+    this.storage.forEach((value, key, index) => {
+      this.currentIngredients.push(value);})
   }
 
-  getRecipes(queryText) {
-    return null;
-  }
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+        this.shownGroup = null;
+    } else {
+        this.shownGroup = group;
+    }
+  };
+
+  isGroupShown(group) {
+    return this.shownGroup === group;
+  };
 
   sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  getRecipesData(ingredient) {
-    console.log("DEBUG",ingredient)
-    if (ingredient == null) {
-      document.getElementById("defaultList").innerHTML = this.nullMessage;
-      return null;
+  getRecipesData() {
+
+    this.initialRecipeRequest = "&q=";
+    for(let i=0; i<this.currentIngredients.length; i++){
+      this.initialRecipeRequest += this.currentIngredients[i] + ", ";
     }
-    this.edamamApiProvider.getRecipesData(ingredient).subscribe(data => {
-      if (data == null) {
-        this.sleep(5000)
-      }
-      if (data == null) {
-        alert(this.noResponseFromWebService);
-      }
-      for (var i = 0; i < this.food.length; i++) {
-        if (this.food[i] == data) {
-          alert(this.duplicateIngredient);
-          return 0;
-        }
-      }
-      if(data.trim().length > 0)
-        this.food.push(data);
+
+    this.requestString = this.initialRecipeRequest.slice(this.firstCharsSlice,this.lastCharsSlice);
+
+    if(this.requestString != null){
+    this.edamamApiProvider.getRecipesData(this.requestString).subscribe(data => {
+      
+    this.addRecipeToList(data);
+      
     }
-    )
-    document.getElementById("defaultList").style.visibility = "hidden";
-    document.getElementById("recipesContainer").style.visibility = "visible";
+    )}
+    this.showResults();
+
   }
 
   removeItem(item) {
@@ -89,5 +113,116 @@ export class RecipesPage {
         this.food.splice(i, 1);
       }
     }
+  }
+
+  getPreferencesFromStorage(){
+    localForage.getItem(this.veganString).then((value)=>{ 
+      if(value == this.TRUE_STRING){
+        this.vegan = true;
+      }
+    })
+
+    localForage.getItem(this.vegetarianString).then((value)=>{ 
+      if(value == this.TRUE_STRING){
+        this.vegetarian = true;
+      }
+    })
+
+    localForage.getItem(this.glutenString).then((value)=>{ 
+      if(value == this.TRUE_STRING){
+        this.gluten = true;
+      }
+    })
+
+    localForage.getItem(this.lactoseString).then((value)=>{ 
+      if(value == this.TRUE_STRING){
+        this.lactose = true;
+      }
+    })
+  }
+
+  checkPreferences(healthLabels:string[]){
+
+    let mandatoryConditions = 0;
+    let counter = 0;
+
+    if(this.vegan){
+      mandatoryConditions++; 
+    }
+
+    if(this.vegetarian){
+      mandatoryConditions++;
+    }
+
+    if(this.gluten){
+      mandatoryConditions++;
+    }
+
+    if(this.lactose){
+      mandatoryConditions++;
+    }
+
+    for(let i = 0; i < healthLabels.length; i++){
+      
+        if(healthLabels[i] == this.veganString){
+          counter++;
+        }
+      
+        if(healthLabels[i] == this.vegetarianString){
+          counter++;
+        }
+      
+        if(healthLabels[i] == this.GLUTEN_STRING_EDAMAM){
+          counter++;
+        }
+
+        if(healthLabels[i] == this.LACTOSE_STRING_EDAMAM){
+          counter++;
+        }
+  }
+
+  if(mandatoryConditions <= counter){
+    return true;
+  }
+  else {
+    return false;
+  }
+   
+  }
+
+  checkForDuplicates(data){
+    if(this.food.length != 0) {
+      for(var j = 0; j < this.food.length; j++){
+        console.log("DEBUG: this[j].food: " + this.food[j].label + " data.label: " + data.label);
+          if(this.food[j].label == data.label){
+            alert(this.duplicateRecipe);
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    addRecipeToList(data){
+    for (var i = 0; i < data.length; i++) {
+      if(this.food.length < this.MAXIMUM_RECIPES){
+        if(this.checkPreferences(data[i].healthLabels)){
+          if(this.checkForDuplicates(data[i])){
+            this.food.push(data[i]);  
+          }
+          else{ 
+            return 1;
+          }
+        }
+      }
+      else{ 
+        alert(this.MAXIMUM_RECIPES_REACHED_MESSAGE);
+        return 1;}
+      }
+  }
+
+  showResults(){
+    document.getElementById("defaultList").style.visibility = "hidden";
+    document.getElementById("recipesContainer").style.visibility = "visible";
   }
 }
