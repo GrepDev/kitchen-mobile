@@ -3,8 +3,9 @@ node_js:
   - stable
 before_install:
   - npm i npm@^4 -g
+  - mkdir www
 install:
-  - npm install
+  - npm install -g npm
 before_script:
   - npm install -g ionic cordova; cordova platform add android
 script:

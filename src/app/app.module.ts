@@ -24,7 +24,6 @@ import { SQLite } from '@ionic-native/sqlite';
     RecipesPage,
     HelpPage,
     PreferencesPage
-    HelpPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +40,6 @@ import { SQLite } from '@ionic-native/sqlite';
     RecipesPage,
     HelpPage,
     PreferencesPage
-    HelpPage
   ],
   providers: [
     StatusBar,
