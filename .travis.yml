@@ -16,8 +16,10 @@ matrix:
       install:
         - npm install
       before_script:
-        - rm rf /node_modules/@types/localforage/
         - npm install -g ionic cordova; cordova platform add android
+        - npm install @ionic/app-scripts@latest
+        - npm install localforage
+        - rm -rf node_modules/@types/localforage
       script:
         - ionic cordova build browser android --release  
 notifications:
