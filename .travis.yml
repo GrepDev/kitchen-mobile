@@ -1,5 +1,11 @@
 matrix:
   include:
+     - language: android
+      android:
+        components:
+          - build-tools-26.0.2
+          - android-26
+          - extra
     - language: node_js
       node_js:
       - stable
@@ -15,9 +21,3 @@ matrix:
        - rm -rf node_modules/@types/localforage
       script:
        - ionic cordova build android --release
-   - language: android
-      android:
-        components:
-          - build-tools-26.0.2
-          - android-26
-          - extra
