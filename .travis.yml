@@ -5,22 +5,21 @@ matrix:
       components:
         - build-tools-26.0.2
         - android-26
+        - add-on
         - extra
     - language: node_js
-      node_js:
+      node_js: 
         - stable
       before_install:
-        - npm i npm@^4 -g
+        - npm install -g npm
         - mkdir www
       install:
-        - npm install -g npm
+        - npm install
       before_script:
+        - rm rf /node_modules/@types/localforage/
         - npm install -g ionic cordova; cordova platform add android
-        - npm install @ionic/app-scripts@latest
-        - npm install localforage
-        - rm -rf node_modules/@types/localforage
       script:
-        - ionic cordova build android --release
+        - ionic cordova build browser android --release  
 notifications:
   email:
     - laurentiu.raducu@gmail.com
