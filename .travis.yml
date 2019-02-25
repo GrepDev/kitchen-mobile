@@ -1,14 +1,9 @@
-matrix:
-  include:
      - language: android
        android:
         components:
           - build-tools-26.0.2
           - android-26
           - extra
-    - language: node_js
-      node_js:
-      - stable
       before_install:
        - npm i npm@^4 -g
        - mkdir www
