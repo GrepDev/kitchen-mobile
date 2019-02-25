@@ -11,4 +11,4 @@ before_script:
   - npm install @ionic/app-scripts@latest
   - npm install localforage
 script:
-  - ionic cordova build browser android prod
+  - ionic cordova build android --release
