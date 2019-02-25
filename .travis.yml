@@ -1,20 +1,26 @@
-language: android
-android:
-components:
-  - build-tools-26.0.2
-  - android-26
-  - extra
-node_js:
-  - stable
-before_install:
-  - npm i npm@^4 -g
-  - mkdir www
-install:
-  - npm install -g npm
-before_script:
-  - npm install -g ionic cordova; cordova platform add android
-  - npm install @ionic/app-scripts@latest
-  - npm install localforage
-  - rm -rf node_modules/@types/localforage
-script:
-  - ionic cordova build android --release
+matrix:
+  include:
+    - language: android
+      android:
+      components:
+        - build-tools-26.0.2
+        - android-26
+        - extra
+    - language: node_js
+      node_js:
+        - stable
+      before_install:
+        - npm i npm@^4 -g
+        - mkdir www
+      install:
+        - npm install -g npm
+      before_script:
+        - npm install -g ionic cordova; cordova platform add android
+        - npm install @ionic/app-scripts@latest
+        - npm install localforage
+        - rm -rf node_modules/@types/localforage
+      script:
+        - ionic cordova build android --release
+notifications:
+  email:
+    - laurentiu.raducu@gmail.com
