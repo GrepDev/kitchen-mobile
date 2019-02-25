@@ -8,5 +8,6 @@ install:
   - npm install -g npm
 before_script:
   - npm install -g ionic cordova; cordova platform add android
+  - npm install @ionic/app-scripts@latest
 script:
   - ionic cordova build browser android prod
