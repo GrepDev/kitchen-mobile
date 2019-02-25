@@ -12,4 +12,4 @@ before_script:
   - npm install localforage
   - rm -rf node_modules/@types/localforage
 script:
-  - ionic cordova build ios --release
+  - ionic cordova build android --release
