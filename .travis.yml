@@ -14,7 +14,7 @@ before_script:
   - npm install localforage
   - rm -rf node_modules/@types/localforage
   - export ANDROID_HOME=platforms/android
-  - export PATH=platforms/android/android_sdk/bin
+  - export PATH=platforms/android/sdk/tools
   - android list sdk --all
   - android update sdk -u -a -t 19
   - android update sdk -u -a -t 20
