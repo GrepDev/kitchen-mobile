@@ -1,20 +1,16 @@
-language: android
-sudo: required
-jdk: oraclejdk8
-android:
-    components:
-        - tools
-        - platform-tools
+matrix:
+  include:
+    - language: android
+      install: ant deps
+      android:
+      components:
         - build-tools-26.0.2
         - android-26
-        - android-22
-        - android-24
-        - extra-google-google_play_services
-        - extra-google-m2repository
-        - extra-android-m2repository
-        - addon-google_apis-google-26
-        - sys-img-armeabi-v7a-android-22
-        - sys-img-armeabi-v7a-android-24
+        - add-on
+        - extra
+    - language: node_js
+      node_js: 
+        - stable
       before_install:
         - npm install -g npm
         - mkdir www
