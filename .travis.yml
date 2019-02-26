@@ -22,9 +22,8 @@ matrix:
         - npm install -g npm
         - mkdir www
       install:
-        - npm install -g npm
-      before_script:
         - npm install -g ionic cordova; cordova platform add android
+      before_script:
         - npm install @ionic/app-scripts@latest
         - rm -rf node_modules/@types/localforage
       script:
