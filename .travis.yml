@@ -4,12 +4,14 @@ matrix:
       install: ant deps
       android:
       components:
-        - tools
         - platform-tools
+        - tools
         - build-tools-28.0.3
-        - android-26
-        - add-on
-        - extra
+        - android-28
+        - extra-android-m2repository
+        - extra-android-support
+        - extra-google-m2repository
+        - extra-google-google_play_services
     - language: node_js
       node_js: 
         - stable
