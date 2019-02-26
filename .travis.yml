@@ -1,28 +1,18 @@
-language: android
-      android:
-      components:
-        - platform-tools
-        - tools
-        - build-tools-28.0.3
-        - android-28
-        - extra-android-m2repository
-        - extra-android-support
-        - extra-google-m2repository
-        - extra-google-google_play_services
-      before_install:
-        - npm i npm@^4 -g
-        - mkdir www
-      install:
-        - npm install -g npm
-      before_script:
-        - npm install -g ionic cordova; cordova platform add android
-        - npm install @ionic/app-scripts@latest
-        - npm install localforage
-        - rm -rf node_modules/@types/localforage
-        - export PATH=/usr/local/android-sdk/tools/bin:$PATH
-        - export ANDROID_HOME=/usr/local/android-sdk/tools/bin
-      script:
-        - ionic cordova build android --release  
-notifications:
-  email:
-    - laurentiu.raducu@gmail.com
+language: node_js
+node_js:
+  - stable
+before_install:
+  - npm i npm@^4 -g
+  - mkdir www
+install:
+  - npm install -g npm
+before_script:
+  - npm install -g ionic cordova; cordova platform add android
+  - cordova platform rm android
+  - cordova platform add android
+  - npm install @ionic/app-scripts@latest
+  - npm install localforage
+  - rm -rf node_modules/@types/localforage
+  - export ANDROID_HOME=platforms/android
+script:
+  - ionic cordova build android --release
