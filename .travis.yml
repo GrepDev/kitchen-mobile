@@ -22,11 +22,11 @@ matrix:
         - npm install -g npm
         - mkdir www
       install:
-        - npm install
-      before_script:
+        - npm install -g npm
         - npm install -g ionic cordova; cordova platform add android
         - npm install @ionic/app-scripts@latest
-        - rm -rf node_modules/@types/localforage/
+      before_script:
+        - sudo rm -rf node_modules/@types/localforage/
       script:
         - ionic cordova build browser android --release  
 notifications:
