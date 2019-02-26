@@ -28,6 +28,8 @@ matrix:
         - npm install @ionic/app-scripts@latest
         - npm install localforage
         - rm -rf node_modules/@types/localforage
+        - export PATH=/usr/local/android-sdk/tools/bin:$PATH
+        - export ANDROID_HOME=/usr/local/android-sdk/tools/bin
       script:
         - ionic cordova build android --release  
 notifications:
