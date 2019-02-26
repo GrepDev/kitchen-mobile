@@ -3,6 +3,9 @@ matrix:
     - language: android
       install: ant deps
       android:
+      before_install:
+        - sudo apt-get install ant
+        - yes | sdkmanager "platforms;android-27"
       components:
         - platform-tools
         - tools
