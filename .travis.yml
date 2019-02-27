@@ -1,3 +1,4 @@
+os: osx
 language: node_js
 node_js:
   - stable
@@ -7,6 +8,12 @@ before_install:
 install:
   - npm install -g npm
 before_script:
-  - npm install -g ionic cordova; cordova platform add android
+  - npm install -g ionic cordova; cordova platform add ios
+  - npm install @ionic/app-scripts@latest
+  - npm install localforage
+  - rm -rf node_modules/@types/localforage
 script:
-  - ionic cordova build browser android prod
+  - ionic cordova build ios --release
+notifications:
+  email:
+    - laurentiu.raducu@gmail.com
