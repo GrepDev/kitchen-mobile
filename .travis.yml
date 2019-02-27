@@ -3,20 +3,21 @@ android:
   components:
     - build-tools-23.0.1
     - android-23
+language: node_js
+node_js:
+  - stable
 before_install:
-  - sudo apt-get install nodejs
-  - sudo apt-get install nodejs npm
+  - npm i npm@^4 -g
   - mkdir www
-  - npm config set strict-ssl false
-  - sudo npm i npm@^4 -g
 install:
-  - sudo npm install -g npm
+  - npm install -g npm
 before_script:
-  - sudo npm install -g ionic cordova; cordova platform add android
-  - sudo cordova platform rm android
-  - sudo cordova platform add android
-  - sudo npm install @ionic/app-scripts@latest
-  - sudo npm install localforage
-  - sudo rm -rf node_modules/@types/localforage
+  - npm install -g ionic cordova; cordova platform add ios
+  - cordova platform rm ios
+  - cordova platform add ios
+  - npm install @ionic/app-scripts@latest
+  - npm install localforage
+  - rm -rf node_modules/@types/localforage
+  - cordova requirements
 script:
-  - ionic cordova build android --release
+  - ionic cordova build ios --release
