@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install nodejs npm
   - mkdir www
   - npm config set strict-ssl false
-  - npm i npm@^4 -g
+  - sudo npm i npm@^4 -g
 install:
   - sudo npm install -g npm
 before_script:
