@@ -18,6 +18,9 @@ before_install:
 install:
   - npm install -g npm
 before_script:
+  - export ANDROID_HOME=~/android-sdk-linux 
+  - export PATH=$PATH:$ANDROID_HOME/tools 
+  - export PATH=$PATH:$ANDROID_HOME/platform-tools  
   - npm install -g ionic cordova; cordova platform add android
   - cordova platform rm android
   - cordova platform add android
