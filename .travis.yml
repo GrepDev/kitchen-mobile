@@ -13,6 +13,6 @@ before_script:
   - npm install @ionic/app-scripts@latest
   - npm install localforage
   - rm -rf node_modules/@types/localforage
-  - export ANDROID_HOME=platforms/android
+  - cordova requirements
 script:
   - ionic cordova build android --release
