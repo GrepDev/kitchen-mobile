@@ -5,6 +5,7 @@ android:
     - android-23
 before_install:
   - sudo apt-get install nodejs
+  - sudo apt-get install nodejs npm
   - npm i npm@^4 -g
   - mkdir www
 install:
