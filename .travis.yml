@@ -13,7 +13,10 @@ addons:
     - lib32z1
 env:
   CXX=g++-4.8
-
+  
+before_install:
+  - mkdir www
+  
 install:
   - npm install -g gulp bower cordova ionic
   - npm install
@@ -32,7 +35,7 @@ before_script:
   - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/23.0.2
 
 script:
-  - cordova prepare
+  - ionic cordova build android --release
 notifications:
   email:
     - oalexoprea@yahoo.com
