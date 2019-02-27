@@ -7,12 +7,12 @@ before_install:
 install:
   - npm install -g npm
 before_script:
-  - npm install -g ionic cordova; cordova platform add android
-  - cordova platform rm android
-  - cordova platform add android
+  - npm install -g ionic cordova; cordova platform add ios
+  - cordova platform rm ios
+  - cordova platform add ios
   - npm install @ionic/app-scripts@latest
   - npm install localforage
   - rm -rf node_modules/@types/localforage
   - cordova requirements
 script:
-  - ionic cordova build android --release
+  - ionic cordova build ios --release
