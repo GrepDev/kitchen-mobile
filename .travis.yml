@@ -1,18 +1,19 @@
-language: node_js
-node_js:
-  - stable
+language: android
+android:
+  components:
+    - build-tools-23.0.1
+    - android-23
 before_install:
   - npm i npm@^4 -g
   - mkdir www
 install:
   - npm install -g npm
 before_script:
-  - npm install -g ionic cordova; cordova platform add ios
-  - cordova platform rm ios
-  - cordova platform add ios
+  - npm install -g ionic cordova; cordova platform add android
+  - cordova platform rm android
+  - cordova platform add android
   - npm install @ionic/app-scripts@latest
   - npm install localforage
   - rm -rf node_modules/@types/localforage
-  - cordova requirements
 script:
-  - ionic cordova build ios --release
+  - ionic cordova build android --release
