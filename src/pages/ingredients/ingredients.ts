@@ -31,8 +31,6 @@ export class IngredientsPage {
 
   private nullMessage: string = "Search for an ingredient first";
 
-  private nullIngredientID: string = "Ingredient ID cannot be null";
-
   private noResults: string = "No results";
 
   private receivedResponse: string;
@@ -47,6 +45,16 @@ export class IngredientsPage {
     "You can either search for the ingredients that you have in your kitchen, " +
     "or those that you want to use in your recipe."
 
+  private defaultList = "defaultList";
+
+  private ingredientsContainer = "ingredientsContainer";
+
+  private hiddenString = "hidden";
+
+  private visibleString = "visible";
+
+  private nullArray = 0;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private edamamApiProvider: EdamamApiProvider,
@@ -57,8 +65,8 @@ export class IngredientsPage {
 
     this.storage.length().then(result =>{
       if(result > 0){
-        document.getElementById("defaultList").style.visibility = "hidden";
-        document.getElementById("ingredientsContainer").style.visibility = "visible";
+        document.getElementById(this.defaultList).style.visibility = this.hiddenString;
+        document.getElementById(this.ingredientsContainer).style.visibility = this.visibleString;
         this.storage.forEach( (value, key, index) => {
           this.food.push(key);
         })
@@ -76,7 +84,7 @@ export class IngredientsPage {
 
   getIngredientsData(ingredient) {
     if (ingredient == null) {
-      document.getElementById("defaultList").innerHTML = this.nullMessage;
+      document.getElementById(this.defaultList).innerHTML = this.nullMessage;
       return null;
     }
     this.edamamApiProvider.getIngredientsData(ingredient).subscribe(data => {
@@ -103,14 +111,13 @@ export class IngredientsPage {
       this.storage.set(data.label, ingredient);
     }
     )
-    document.getElementById("defaultList").style.visibility = "hidden";
-    document.getElementById("ingredientsContainer").style.visibility = "visible";
+    document.getElementById(this.defaultList).style.visibility = this.hiddenString;
+    document.getElementById(this.ingredientsContainer).style.visibility = this.visibleString;
   }
 
   removeItem(item) {
     for (var i = 0; i < this.food.length; i++) {
       if (this.food[i] == item) {
-        console.log(item);
         this.food.splice(i, 1);
         this.storage.remove(item);
       }

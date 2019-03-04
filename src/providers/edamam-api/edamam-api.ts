@@ -23,18 +23,23 @@ export class EdamamApiProvider {
     return this.baseUrl;
   }
 
+  public getRecipesList(){
+    return this.recipesList;
+  }
+
+  public getCurrentFood(){
+    return this.currentFood;
+  }
+
 
   constructor(public http: Http, public storage: Storage) {
     console.log('Data provider has been constructed');
   }
 
   getIngredientsData(ingredients): Observable<any> {
-    console.log('DEBUG: getIngredientsData',ingredients);
     let url = this.ingredientsUrl + encodeURI(ingredients);
     return this.http.get(`${url}`).map(response => {
       this.currentFood = response.json();
-      console.log('DEBUG: getIngredientsData.currentFood',this.currentFood);
-      console.log('DEBUG: getIngredientsData',this.currentFood.parsed);
       if(this.currentFood.parsed.length > 0)
         return this.currentFood.parsed[0].food;
       else
@@ -44,14 +49,9 @@ export class EdamamApiProvider {
   getRecipesData(ingredients): Observable<any> {
   
     let url = this.recipesUrl + encodeURI(ingredients);
-    console.log('DEBUG: url' + url);
 
     return this.http.post(`${url}`, this.requestBody).map(response => {
-      console.log('DEBUG: POST Triggered');
       this.currentFood = response.json();
-      console.log('DEBUG: response',response);
-      console.log('DEBUG: getIngredientsData.currentFood',this.currentFood);
-      console.log('DEBUG: getIngredientsData',this.currentFood.parsed);
       if(response.status === 200 )
         if (this.currentFood.hits.length > 0) {
           if(this.currentFood.hits.length >= this.MAX_RECIPES){
@@ -70,8 +70,33 @@ export class EdamamApiProvider {
         alert(this.errorOccurredMessage);
     })
   }
+
+  getMoreRecipesOfSameType(ingredients): Observable<any> {
+  
+    let url = this.recipesUrl + encodeURI(ingredients);
+
+    return this.http.post(`${url}`, this.requestBody).map(response => {
+      this.currentFood = response.json();
+      if(response.status === 200 )
+        if (this.currentFood.hits.length > this.MAX_RECIPES) {
+            for(this.index = this.MAX_RECIPES; this.index < this.currentFood.hits.length; this.index++){
+              this.recipesList.push(this.currentFood.hits[this.index].recipe)
+            }
+            return this.recipesList;
+          }
+        else {
+          alert(this.noRecipesMessage);
+          return null;
+        }
+          return this.currentFood.hits[0].recipe;
+    })
+  }
+
+  removeRecipes(){
+    this.recipesList = [];
+  }
+
   getIngredientID(ingredientName): Observable<any> {
-    console.log('DEBUG getIngredientID: ',ingredientName);
     let url = this.ingredientsUrl + encodeURI(ingredientName);
     return this.http.get(`${url}`).map(response => {
       this.currentFood = response.json();

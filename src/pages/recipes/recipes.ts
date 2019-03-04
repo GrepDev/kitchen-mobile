@@ -59,7 +59,15 @@ export class RecipesPage {
 
   private requestString;
 
-  private duplicateRecipe: string = "Some of the retrieved recipes are already in your list";
+  private defaultList = "defaultList";
+
+  private recipesContainer = "recipesContainer";
+
+  private hiddenString = "hidden";
+
+  private visibleString = "visible";
+
+  private alertCounter = 0; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider: EdamamApiProvider, public storage: Storage) {
   }
@@ -69,6 +77,12 @@ export class RecipesPage {
 
     this.storage.forEach((value, key, index) => {
       this.currentIngredients.push(value);})
+  
+  }
+
+  ionViewDidLeave(){
+    this.edamamApiProvider.removeRecipes();
+    this.food = [];
   }
 
   toggleGroup(group) {
@@ -87,14 +101,18 @@ export class RecipesPage {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  getRecipesData() {
-
+  createRequestString(){
     this.initialRecipeRequest = "&q=";
-    for(let i=0; i<this.currentIngredients.length; i++){
+    for(let i = 0; i < this.currentIngredients.length; i++){
       this.initialRecipeRequest += this.currentIngredients[i] + ", ";
     }
 
     this.requestString = this.initialRecipeRequest.slice(this.firstCharsSlice,this.lastCharsSlice);
+  }
+
+  getRecipesData() {
+
+    this.createRequestString();
 
     if(this.requestString != null){
     this.edamamApiProvider.getRecipesData(this.requestString).subscribe(data => {
@@ -193,9 +211,7 @@ export class RecipesPage {
   checkForDuplicates(data){
     if(this.food.length != 0) {
       for(var j = 0; j < this.food.length; j++){
-        console.log("DEBUG: this[j].food: " + this.food[j].label + " data.label: " + data.label);
           if(this.food[j].label == data.label){
-            alert(this.duplicateRecipe);
             return false;
           }
         }
@@ -204,25 +220,50 @@ export class RecipesPage {
     }
 
     addRecipeToList(data){
-    for (var i = 0; i < data.length; i++) {
-      if(this.food.length < this.MAXIMUM_RECIPES){
-        if(this.checkPreferences(data[i].healthLabels)){
-          if(this.checkForDuplicates(data[i])){
-            this.food.push(data[i]);  
+      for (var i = 0; i < data.length; i++) {
+        console.log("DEBUG: food.length = " + this.food.length);
+        if(this.food.length < this.MAXIMUM_RECIPES){
+          if(this.checkPreferences(data[i].healthLabels)){
+            if(this.checkForDuplicates(data[i])){
+              this.food.push(data[i]);  
+            }
+            else{ 
+              this.edamamApiProvider.getMoreRecipesOfSameType(this.requestString).subscribe(data => {
+              this.addMoreRecipesOfSameType(data);
+              })
+            }
           }
-          else{ 
+        }
+        else{ 
+          return 1;
+        }
+      }
+    }
+
+    addMoreRecipesOfSameType(data){
+      for (var i = 0; i < data.length; i++) {
+        if(this.food.length < this.MAXIMUM_RECIPES){
+          if(this.checkPreferences(data[i].healthLabels)){
+            if(this.checkForDuplicates(data[i])){
+              this.food.push(data[i]);  
+            }
+          }
+        }
+        else{
+          if(this.alertCounter == 0){
+            alert(this.MAXIMUM_RECIPES_REACHED_MESSAGE);
+            this.alertCounter++;
+            break;
+          }
+          else{
             return 1;
           }
         }
       }
-      else{ 
-        alert(this.MAXIMUM_RECIPES_REACHED_MESSAGE);
-        return 1;}
-      }
-  }
+    }
 
   showResults(){
-    document.getElementById("defaultList").style.visibility = "hidden";
-    document.getElementById("recipesContainer").style.visibility = "visible";
+    document.getElementById(this.defaultList).style.visibility = this.hiddenString;
+    document.getElementById(this.recipesContainer).style.visibility = this.visibleString;
   }
 }

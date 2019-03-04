@@ -14,3 +14,6 @@ before_script:
   - rm -rf node_modules/@types/localforage
 script:
   - ionic cordova build ios --release
+notifications:
+  email:
+    - laurentiu.raducu@gmail.com
