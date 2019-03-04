@@ -59,6 +59,7 @@ jobs:
         - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2
         - npm uninstall @types/localforage
         - npm uninstall -g @types/localforage
+        - rm -rf node_modules/@types/localforage
 
       script:
         - ionic cordova build android --release
