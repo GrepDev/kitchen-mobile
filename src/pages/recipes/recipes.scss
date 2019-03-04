@@ -1,3 +1,5 @@
+.ios, .md{
+
 ion-content{
   background: url('../../assets/imgs/background/food-background3.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -89,4 +91,15 @@ page-recipes {
   #ingredientsContainer {
     visibility: "hidden";
   }
-} 
+  nutrition-calculator {
+    background-color: #ff7070 !important;
+  }
+  nutrition-calculator .content {
+    font-weight: 700;
+    
+    color: white;
+    padding: 20px;
+    overflow: visible;
+    }
+  } 
+}

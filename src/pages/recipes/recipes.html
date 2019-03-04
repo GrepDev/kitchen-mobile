@@ -25,3 +25,28 @@
         </ion-list>
     </div>
 </ion-content>
+
+<nutrition-calculator [options]="drawerOptions">
+    
+	<div class="content" *ngFor="let recipe of food; let k = index" [ngClass]="{active: isGroupShown(k)}" (click)="toggleGroup(k)" text-wrap>
+	  {{recipe.label}}
+	  <p text-wrap>
+	    {{recipe.url}}
+      </p>
+        <ion-item text-wrap class="ion-item">
+            Nutritional Data
+        <ion-icon color="success" item-right [name]="isGroupShown(k) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        <div class="ingredientSteps" *ngIf="isGroupShown(k)" > 
+        Total Calories for this recipe: {{recipe.calories}}<br>
+
+        {{recipe.totalNutrients.FAT.label}}: {{recipe.totalNutrients.FAT.quantity}}{{recipe.totalNutrients.FAT.unit}}<br>
+        {{recipe.totalNutrients.CHOCDF.label}}: {{recipe.totalNutrients.CHOCDF.quantity}}{{recipe.totalNutrients.CHOCDF.unit}}<br>
+        {{recipe.totalNutrients.FIBTG.label}}: {{recipe.totalNutrients.FIBTG.quantity}}{{recipe.totalNutrients.FIBTG.unit}}<br>
+        {{recipe.totalNutrients.SUGAR.label}}: {{recipe.totalNutrients.SUGAR.quantity}}{{recipe.totalNutrients.SUGAR.unit}}<br>
+        {{recipe.totalNutrients.PROCNT.label}}: {{recipe.totalNutrients.PROCNT.quantity}}{{recipe.totalNutrients.PROCNT.unit}}<br>
+        {{recipe.totalNutrients.NA.label}}: {{recipe.totalNutrients.NA.quantity}}{{recipe.totalNutrients.NA.unit}}<br>
+        
+        </div>
+        </ion-item>
+	</div>
+</nutrition-calculator>

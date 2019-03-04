@@ -14,6 +14,7 @@ import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
 import { File } from '@ionic-native/file';
 import { IonicStorageModule } from '@ionic/storage';
 import { PreferencesPage } from '../pages/preferences/preferences';
+import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator';
 import { SQLite } from '@ionic-native/sqlite';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SQLite } from '@ionic-native/sqlite';
     IngredientsPage,
     RecipesPage,
     HelpPage,
-    PreferencesPage
+    PreferencesPage,
+    NutritionCalculatorComponent
   ],
   imports: [
     BrowserModule,

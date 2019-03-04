@@ -41,10 +41,6 @@ export class IngredientsPage {
 
   private noResponseFromWebService: string = "There was an error retrieving the response from the webservice"
 
-  private noIngredientInTheList: string = "You currently don't have any ingredient added." +
-    "You can either search for the ingredients that you have in your kitchen, " +
-    "or those that you want to use in your recipe."
-
   private defaultList = "defaultList";
 
   private ingredientsContainer = "ingredientsContainer";
@@ -53,25 +49,23 @@ export class IngredientsPage {
 
   private visibleString = "visible";
 
-  private nullArray = 0;
-
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
     private edamamApiProvider: EdamamApiProvider,
     private storage: Storage) {
   }
 
   ionViewDidLoad() {
 
-    this.storage.length().then(result =>{
-      if(result > 0){
+    this.storage.length().then(result => {
+      if (result > 0) {
         document.getElementById(this.defaultList).style.visibility = this.hiddenString;
         document.getElementById(this.ingredientsContainer).style.visibility = this.visibleString;
-        this.storage.forEach( (value, key, index) => {
+        this.storage.forEach((value, key, index) => {
           this.food.push(key);
         })
       }
-      });
+    });
   }
 
   getIngredients(queryText) {
@@ -103,7 +97,7 @@ export class IngredientsPage {
       this.receivedResponse = data.label;
 
       this.receivedResponse = data;
-      if(this.receivedResponse == this.noResults) {
+      if (this.receivedResponse == this.noResults) {
         alert(this.noResultsFound);
         return 0;
       }
