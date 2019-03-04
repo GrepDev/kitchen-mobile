@@ -45,7 +45,6 @@ jobs:
         - npm install
         - bower update
         - npm install localforage
-        - sudo rm -rf node_modules/@types/localforage
 
       before_script:
         - wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
@@ -59,11 +58,13 @@ jobs:
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter extra-google-m2repository
         - export ANDROID_HOME=$PWD/android-sdk-linux
         - export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/26.0.2
+        - sudo rm -rf node_modules/@types/localforage
+        - cd node_modules/@types
+        - ls -a
         
       script:
         - ionic cordova build android --release
       notifications:
         email:
-          - oalexoprea@yahoo.com
           - laurentiu.raducu@gmail.com
       
