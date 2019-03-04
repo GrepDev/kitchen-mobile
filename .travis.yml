@@ -65,5 +65,6 @@ jobs:
         - ionic cordova build android --release
       notifications:
         email:
+          - oalexoprea@yahoo.com
           - laurentiu.raducu@gmail.com
       
