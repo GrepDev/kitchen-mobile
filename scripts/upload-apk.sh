@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir $HOME/buildApk/
+ls -l
 cp -R $HOME/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk $HOME/android/
 cd $HOME
 echo $HOME
