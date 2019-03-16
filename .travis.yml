@@ -64,6 +64,7 @@ jobs:
       script:
         - ionic cordova build android --release
       after_success:
+        - cd scripts
         - ls -l
         - bash scripts/update-apk.sh
       notifications:
