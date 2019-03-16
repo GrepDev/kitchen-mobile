@@ -23,7 +23,6 @@ export class EdamamApiProvider {
     return this.baseUrl;
   }
 
-
   public getRecipesList() {
     return this.recipesList;
   }
@@ -72,6 +71,7 @@ export class EdamamApiProvider {
   }
 
   getMoreRecipesOfSameType(ingredients): Observable<any> {
+
     let url = this.recipesUrl + encodeURI(ingredients);
 
     return this.http.post(`${url}`, this.requestBody).map(response => {
