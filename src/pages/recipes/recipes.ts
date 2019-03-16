@@ -17,6 +17,8 @@ import localForage from "localforage";
 })
 export class RecipesPage {
 
+  drawerOptions: any;
+
   public localStorage: LocalForage; 
 
   private TRUE_STRING = "true";
@@ -70,6 +72,13 @@ export class RecipesPage {
   private alertCounter = 0; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider: EdamamApiProvider, public storage: Storage) {
+    
+    this.drawerOptions = {
+			handleHeight: 50,
+			thresholdFromBottom: 200,
+			thresholdFromTop: 200,
+			bounceBack: true
+    };
   }
 
   ionViewDidLoad() {
@@ -221,7 +230,6 @@ export class RecipesPage {
 
     addRecipeToList(data){
       for (var i = 0; i < data.length; i++) {
-        console.log("DEBUG: food.length = " + this.food.length);
         if(this.food.length < this.MAXIMUM_RECIPES){
           if(this.checkPreferences(data[i].healthLabels)){
             if(this.checkForDuplicates(data[i])){

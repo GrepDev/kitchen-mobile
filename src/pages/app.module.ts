@@ -15,6 +15,7 @@ import { File } from '@ionic-native/file';
 import { IonicStorageModule } from '@ionic/storage';
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { SQLite } from '@ionic-native/sqlite';
+import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SQLite } from '@ionic-native/sqlite';
     IngredientsPage,
     RecipesPage,
     HelpPage,
-    PreferencesPage
+    PreferencesPage,
+    NutritionCalculatorComponent
   ],
   imports: [
     BrowserModule,
