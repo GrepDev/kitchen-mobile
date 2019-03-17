@@ -64,7 +64,9 @@ jobs:
       script:
         - ionic cordova build android --release
       after_success:
-        - bash /scripts/upload-apk.sh
+        - cd scripts
+        - ls -l
+        - ./upload-apk.sh
       notifications:
         email:
           - oalexoprea@yahoo.com
