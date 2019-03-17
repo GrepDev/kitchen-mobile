@@ -66,7 +66,7 @@ jobs:
       after_success:
         - cd scripts
         - ls -l
-        - ./upload-apk.sh
+        - sudo ./upload-apk.sh
       notifications:
         email:
           - oalexoprea@yahoo.com
