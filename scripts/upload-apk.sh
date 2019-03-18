@@ -5,7 +5,7 @@ cp -R $HOME/build/GrepDev/kitchen-mobile/platforms/android/app/build/outputs/apk
 cd $HOME
 git config --global user.email "laurentiu.raducu@gmail.com"
 git config --global user.name "LaurentiuGabriel"
-yes | git clone --quiet --branch=feature/travis-deploy https://GrepDev:4b44633443ddf9bf2b63c7eb8335ff7faa836c1a@github.com/GrepDev/kitchen-mobile apk > /dev/null
+yes | git clone --quiet --branch=feature/travis-deploy https://LaurentiuGabriel:db3266e7123159bc9a5fcdd631dc068fd7d1157b@github.com/GrepDev/kitchen-mobile apk > /dev/null
 ls -l
 cd build/GrepDev/kitchen-mobile 
 cp -R $HOME/build/GrepDev/kitchen-mobile/buildApk .
