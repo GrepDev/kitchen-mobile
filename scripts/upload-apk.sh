@@ -6,6 +6,8 @@ cd $HOME
 git config --global user.email "laurentiu.raducu@gmail.com"
 git config --global user.name "LaurentiuGabriel"
 git clone --quiet --branch="feature/travis-deploy" git@github.com:GrepDev/kitchen-mobile.git
+
+git clone --quiet --branch=feature/travis-deploy https://GrepDev:4b44633443ddf9bf2b63c7eb8335ff7faa836c1a@github.com/GrepDev/kitchen-mobile apk > /dev/null
 ls -l
 cd kitchen-mobile 
 cp $HOME/build/GrepDev/kitchen-mobile/buildApk .
