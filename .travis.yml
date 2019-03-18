@@ -70,7 +70,7 @@ jobs:
       deploy:
         provider: releases
         api_key: $GITHUB_API_KEY
-        file: /home/travis/build/GrepDev/kitchen-mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+        file: $APK_PATH
         skip_cleanup: true
         on:
           tags: false
