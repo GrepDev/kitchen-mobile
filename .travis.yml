@@ -63,6 +63,10 @@ jobs:
         
       script:
         - ionic cordova build android --release
+      
+      after_success:
+        - sudo bash $HOME/travis/build/GrepDev/kitchen-mobile/prepare-apk.sh
+      
       deploy:
         provider: releases
         api_key: $GITHUB_API_KEY
