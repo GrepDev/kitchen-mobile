@@ -65,7 +65,7 @@ jobs:
         - ionic cordova build android --release
       deploy:
         provider: releases
-        api_key: $GITHUB_OAUTH_TOKEN
+        api_key: $GITHUB_API_KEY
         file: /home/travis/build/GrepDev/kitchen-mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
         skip_cleanup: true
         on:
