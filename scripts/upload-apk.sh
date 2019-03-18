@@ -14,4 +14,4 @@ git add --all .
 git commit -am "[Auto] Update Test Apk ($(date +%Y-%m-%d.%H:%M:%S))"
 git branch -D feature/travis-deploy
 git branch -m feature/travis-deploy
-git push origin feature/travis-deploy --force --quite > /dev/null
+git push origin feature/travis-deploy --force --quiet > /dev/null
