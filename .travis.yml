@@ -63,10 +63,13 @@ jobs:
         
       script:
         - ionic cordova build android --release
-      after_success:
-        - cd scripts
-        - ls -l
-        - sudo bash upload-apk.sh
+      deploy:
+        provider: releases
+        api_key: db3266e7123159bc9a5fcdd631dc068fd7d1157b
+        file: /home/travis/build/GrepDev/kitchen-mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+        skip_cleanup: true
+        on:
+          tags: true
       notifications:
         email:
           - oalexoprea@yahoo.com
