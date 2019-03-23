@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HelpPage } from "../help/help";
 import { IngredientsPage } from '../ingredients/ingredients';
-import { RecipesPage } from '../recipes/recipes';
+import RecipesPage from '../recipes/recipes';
 
 @Component({
   selector: 'page-home',

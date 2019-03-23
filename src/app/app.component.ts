@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { IngredientsPage } from '../pages/ingredients/ingredients';
-import { RecipesPage } from '../pages/recipes/recipes';
+import RecipesPage from '../pages/recipes/recipes';
 import {App} from 'ionic-angular';
 import { HelpPage } from '../pages/help/help';
 import { PreferencesPage } from '../pages/preferences/preferences';

@@ -1,5 +1,5 @@
 mkdir $HOME/buildApk/
-cp -R /media/laur/FD_BETA9SR2/Personal/Projects/Edesia/kitchen-mobile/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk $HOME/android/
+cp -R $HOME/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk $HOME/buildApk/
 cd $HOME
 git config --global user.email "laurentiu.raducu@gmail.com"
 git config --global user.name "LaurentiuGabriel"

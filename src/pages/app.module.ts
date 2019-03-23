@@ -9,13 +9,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from "../pages/help/help";
 import { IngredientsPage } from '../pages/ingredients/ingredients';
-import { RecipesPage } from '../pages/recipes/recipes';
+import RecipesPage from '../pages/recipes/recipes';
 import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
 import { File } from '@ionic-native/file';
 import { IonicStorageModule } from '@ionic/storage';
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { SQLite } from '@ionic-native/sqlite';
 import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator';
+import { RecipesSingleton } from './recipes/recipesSingleton';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NutritionCalculatorComponent } from '../components/nutrition-calculator
     EdamamApiProvider,
     File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SQLite
+    SQLite,
+    RecipesSingleton
   ]
 })
 export class AppModule {}
