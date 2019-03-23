@@ -11,7 +11,8 @@ jobs:
       install:
         - npm install -g npm
       before_script:
-        - npm install ionic cordova@6.0.0
+        - npm install ionic 
+        - npm install cordova@6.0.0
         - cordova platform add ios
         - npm install @ionic/app-scripts@latest
         - npm install localforage
