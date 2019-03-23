@@ -20,6 +20,8 @@ export default class RecipesPage {
 
   drawerOptions: any;
 
+  drawerOptions: any;
+
   public localStorage: LocalForage; 
 
   private TRUE_STRING = "true";

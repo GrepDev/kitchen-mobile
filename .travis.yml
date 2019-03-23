@@ -64,7 +64,14 @@ jobs:
       script:
         - ionic cordova build android --release
       after_success:
-        - bash scripts/update-apk.sh
+        - sudo bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
+      deploy:
+        provider: releases
+        api_key: $GITHUB_API_KEY
+        file: /home/travis/build/GrepDev/kitchen-mobile/platforms/android/app/build/outputs/apk/release/edesia.apk
+        skip_cleanup: true
+        on:
+          tags: false
       notifications:
         email:
           - oalexoprea@yahoo.com
