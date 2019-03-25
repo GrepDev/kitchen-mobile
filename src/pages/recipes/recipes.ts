@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { EdamamApiProvider } from '../../providers/edamam-api/edamam-api';
 import { Storage } from '@ionic/storage';
 import localForage from "localforage";
+import { RecipesSingleton } from './recipesSingleton';
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,7 +16,9 @@ import localForage from "localforage";
   selector: 'page-recipes',
   templateUrl: 'recipes.html',
 })
-export class RecipesPage {
+export default class RecipesPage {
+
+  drawerOptions: any;
 
   drawerOptions: any;
 
@@ -71,6 +74,8 @@ export class RecipesPage {
 
   private alertCounter = 0; 
 
+  private persistentRecipesList = RecipesSingleton.getInstance();
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private edamamApiProvider: EdamamApiProvider, public storage: Storage) {
     
     this.drawerOptions = {
@@ -90,8 +95,30 @@ export class RecipesPage {
   }
 
   ionViewDidLeave(){
-    this.edamamApiProvider.removeRecipes();
+    this.persistentRecipesList.setRecipesList(this.food);
     this.food = [];
+  }
+
+  ionViewWillEnter(){
+    
+    this.loadRecipes();
+  }
+
+  loadRecipes(){
+    if(this.persistentRecipesList.getRecipesList().length > 0){
+        this.addStoredRecipes(this.persistentRecipesList.getRecipesList());
+    }
+  }
+
+  addStoredRecipes(data){
+    for (var i = 0; i < data.length; i++) {
+      if(this.food.length < this.MAXIMUM_RECIPES){
+          if(this.checkForDuplicates(data[i])){
+            this.food.push(data[i]);  
+            }
+        }
+    }
+    this.showResults();
   }
 
   toggleGroup(group) {

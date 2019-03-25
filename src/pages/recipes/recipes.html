@@ -31,7 +31,7 @@
 	<div class="content" *ngFor="let recipe of food; let k = index" [ngClass]="{active: isGroupShown(k)}" (click)="toggleGroup(k)" text-wrap>
 	  {{recipe.label}}
 	  <p text-wrap>
-	    {{recipe.url}}
+        <a href={{recipe.url}}>Recipe's link</a>
       </p>
         <ion-item text-wrap class="ion-item">
             Nutritional Data
