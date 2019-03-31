@@ -53,10 +53,8 @@ jobs:
         - rm -rf node_modules/@types/localforage
 
       before_script:
-        - df
         - wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
-        - df
-        - tar -xvf android-sdk_r24.4-linux.tgz
+        - tar -xf android-sdk_r24.4-linux.tgz
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter platform-tools
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter build-tools-26.0.2
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter android-26
