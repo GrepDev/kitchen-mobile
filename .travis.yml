@@ -69,6 +69,12 @@ jobs:
         - ionic cordova build android --release
       after_success:
         - sudo bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
+        - npm install -g protractor
+        - webdriver-manager start
+        - ionic serve
+        - cd /home/travis/build/GrepDev/kitchen-mobile/src/protractor
+        - protractor conf.js
+
       deploy:
         provider: releases
         api_key: $GITHUB_API_KEY
