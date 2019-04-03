@@ -70,7 +70,7 @@ jobs:
       after_success:
         - sudo bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
         - npm install -g protractor
-        - cd HOME/build/GrepDev/kitchen-mobile/scripts
+        - cd $HOME/build/GrepDev/kitchen-mobile/scripts
         - ./test_server.sh
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
         - protractor conf.js
