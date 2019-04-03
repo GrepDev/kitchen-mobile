@@ -25,7 +25,6 @@ jobs:
     - stage: build app on android
       os: linux
       language: node_js
-      sudo: true
       node_js:
         - stable
       addons:
