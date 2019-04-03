@@ -70,9 +70,8 @@ jobs:
       after_success:
         - sudo bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
         - npm install -g protractor
-        - npm run webdriver-update
-        - npm run webdriver-start
-        - npm run ionic:serve
+        - cd HOME/build/GrepDev/kitchen-mobile/scripts
+        - ./test_server.sh
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
         - protractor conf.js
 
