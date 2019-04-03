@@ -25,6 +25,7 @@ jobs:
     - stage: build app on android
       os: linux
       language: node_js
+      sudo: false
       node_js:
         - stable
       addons:
@@ -68,10 +69,10 @@ jobs:
       script:
         - ionic cordova build android --release
       after_success:
-        - sudo bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
+        - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
         - npm install -g protractor
         - cd $HOME/build/GrepDev/kitchen-mobile/scripts
-        - sudo ./test_server.sh
+        - ./test_server.sh
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
         - protractor conf.js
 
