@@ -72,6 +72,9 @@ jobs:
         - npm install -g protractor
         - sudo bash $HOME/build/GrepDev/kitchen-mobile/scripts/ionic_start.sh
         - sudo bash $HOME/build/GrepDev/kitchen-mobile/scripts/test_server.sh
+        - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
+        - sleep 60
+        - protractor conf.js
 
       deploy:
         provider: releases
