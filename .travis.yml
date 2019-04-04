@@ -74,6 +74,7 @@ jobs:
         - sleep 3
         - ionic serve &
         - sleep 30
+        - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
         - protractor conf.js
 
       deploy:
