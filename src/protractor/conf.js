@@ -10,9 +10,17 @@ exports.config = {
             './recipes/view-recipes-page.js',
             './recipes/search-for-recipes.js'],
     
-    capabilities: {
-        browserName: 'firefox'
-    },
+    multiCapabilities: [
+      {
+        browserName: 'firefox',
+        firefoxOptions: {
+          args: ['--headless']
+      },
+        'moz:firefoxOptions': {
+        args: [ '--headless' ]
+      }
+}
+],
 
     onPrepare: function(){
         browser.driver.manage().window().setPosition(0,0);
