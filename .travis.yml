@@ -75,6 +75,7 @@ jobs:
         - tar -xf geckodriver*
         - chmod +x geckodriver
         - export PATH=$PATH:/$HOME/geckodriver
+        - sudo apt-get install xauth
         - export DISPLAY="127.0.0.1:10.0"
         - webdriver-manager update
         - webdriver-manager start &
