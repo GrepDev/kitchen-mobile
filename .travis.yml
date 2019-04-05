@@ -79,6 +79,7 @@ jobs:
         - webdriver-manager update
         - webdriver-manager start &
         - sleep 10
+        - cd $HOME/build/GrepDev/kitchen-mobile/
         - ionic serve &
         - sleep 100
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
