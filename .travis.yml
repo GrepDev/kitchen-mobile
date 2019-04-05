@@ -69,14 +69,12 @@ jobs:
         - ionic cordova build android --release
       after_success:
         - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
-        - npm install -g protractor
-        - cd $HOME
         - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
         - tar -xf geckodriver*
         - chmod +x geckodriver
         - export PATH=$PATH:/$HOME/geckodriver
-        - sudo apt-get install xauth
-        - export DISPLAY="127.0.0.1:10.0"
+        - npm install -g protractor
+        - cd $HOME
         - webdriver-manager update
         - webdriver-manager start &
         - sleep 10
