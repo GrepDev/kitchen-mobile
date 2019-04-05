@@ -70,9 +70,7 @@ jobs:
       after_success:
         - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
         - sudo apt-get install xauth
-        - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
-        - tar -xf geckodriver-v0.24.0-linux64.tar.gz -C geckodriver
-        - export PATH=$PATH:/$HOME/geckodriver
+        - npm install chromedriver
         - npm install -g protractor
         - cd $HOME
         - webdriver-manager update
