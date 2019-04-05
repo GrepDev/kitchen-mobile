@@ -71,7 +71,7 @@ jobs:
         - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
         - npm install -g protractor
         - cd $HOME
-        - wget https://github.com/mozilla/geckodriver/releases/download/v0.18.0/geckodriver-v0.24.0-linux64.tar.gz
+        - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
         - tar -xf geckodriver*
         - chmod +x geckodriver
         - export PATH=$PATH:/$HOME/geckodriver
