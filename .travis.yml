@@ -69,6 +69,7 @@ jobs:
         - ionic cordova build android --release
       after_success:
         - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
+        - sudo apt-get install xauth
         - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
         - tar -xf geckodriver*
         - chmod +x geckodriver
