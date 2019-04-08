@@ -1,7 +1,7 @@
 describe('Startup testing: ', function(){
     describe('When the site loads up', function(){
         it('Should have all images loaded', function(){
-            browser.get('http://localhost:8100/');
+            browser.get('http://10.20.0.134:8100');
             browser.waitForAngular();
             browser.executeAsyncScript(function (callback) {
                 var imgs = document.getElementsByTagName('img'),
