@@ -10,14 +10,20 @@ exports.config = {
             './recipes/view-recipes-page.js',
             './recipes/search-for-recipes.js'],
     
-      capabilities: {
-  browserName: 'chrome',
 
+capabilities: {
+  browserName: 'chrome',
+  pageLoadStrategy :'normal',
   chromeOptions: {
-     args: [ "--headless", "--disable-gpu", "--window-size=800,600" ]
-   }}, 
+     args: [ "--headless", 
+             "--disable-gpu", 
+             "--window-size=800,600",
+             "--debuggerAddress=127.0.0.1:12633" ]
+   }
+}, 
         
     onPrepare: function(){
         browser.driver.manage().window().setPosition(0,0);
         browser.driver.manage().window().setSize(1280,720);
     }
+ };
