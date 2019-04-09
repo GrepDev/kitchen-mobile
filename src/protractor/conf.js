@@ -13,12 +13,9 @@ exports.config = {
 
 capabilities: {
   browserName: 'chrome',
-  pageLoadStrategy :'normal',
   chromeOptions: {
      args: [ "--headless", 
-             "--disable-gpu", 
-             "--window-size=800,600",
-             "--debuggerAddress=127.0.0.1:12633" ]
+             "--disable-gpu"]
    }
 }, 
         
