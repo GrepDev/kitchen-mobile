@@ -82,7 +82,7 @@ jobs:
         - sleep 10
         - cd $HOME/build/GrepDev/kitchen-mobile/
         - ionic serve &
-        - sleep 100
+        - sleep 300
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
         - protractor conf.js
 
