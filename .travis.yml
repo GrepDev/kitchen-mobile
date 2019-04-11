@@ -84,6 +84,7 @@ jobs:
         - ionic serve &
         - sleep 300
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
+        - ping http://10.20.6.47:8100
         - protractor conf.js
 
       deploy:
