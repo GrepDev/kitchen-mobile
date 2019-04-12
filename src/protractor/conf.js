@@ -1,5 +1,5 @@
 exports.config = {
-    seleniumAddress: 'http://localhost:8100',
+    seleniumAddress: 'http://localhost:4444/wd/hub',
     jasmineNodeOpts: { defaultTimeoutInterval: 26000 },   
     specs: ['./startup/startup-testing.js',
             './startup/displaying-ingredients-page.js',
