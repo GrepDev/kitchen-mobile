@@ -28,6 +28,7 @@ jobs:
       node_js:
         - stable
       addons:
+        firefox: "66.0"
         apt:
          sources:
            - ubuntu-toolchain-r-test
@@ -54,11 +55,7 @@ jobs:
 
       before_script:
         - wget http://dl.google.com/android/android-sdk_r24.4-linux.tgz
-<<<<<<< HEAD
-        - tar -xvf android-sdk_r24.4-linux.tgz
-=======
         - tar -xf android-sdk_r24.4-linux.tgz
->>>>>>> ae4abd524d578a7718134a872589449166df7f43
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter platform-tools
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter build-tools-26.0.2
         - echo y | ./android-sdk-linux/tools/android update sdk --no-ui --all --filter android-26
@@ -72,7 +69,20 @@ jobs:
       script:
         - ionic cordova build android --release
       after_success:
-        - sudo bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
+        - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
+        - sudo apt-get install xauth
+        - npm install -g protractor
+        - cd $HOME
+        - npm install geckodriver
+        - webdriver-manager update
+        - webdriver-manager start &
+        - sleep 10
+        - cd $HOME/build/GrepDev/kitchen-mobile/
+        - ionic serve &
+        - sleep 300
+        - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
+        - protractor conf.js
+
       deploy:
         provider: releases
         api_key: $GITHUB_API_KEY
