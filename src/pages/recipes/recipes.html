@@ -15,7 +15,7 @@
                     {{recipe.label}}
                     <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
                 <div class="ingredientSteps" *ngIf="isGroupShown(i)"> 
-                    {{recipe.ingredientLines}}<br>
+                        <a href={{recipe.url}}>Recipe's link</a><br>
                 </div>
                 </ion-item>
                 <ion-item-options side="right">
@@ -31,7 +31,7 @@
 	<div class="content" *ngFor="let recipe of food; let k = index" [ngClass]="{active: isGroupShown(k)}" (click)="toggleGroup(k)" text-wrap>
 	  {{recipe.label}}
 	  <p text-wrap>
-        <a href={{recipe.url}}>Recipe's link</a>
+        {{recipe.ingredientLines}}
       </p>
         <ion-item text-wrap class="ion-item">
             Nutritional Data
