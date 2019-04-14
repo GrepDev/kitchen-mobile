@@ -28,6 +28,7 @@ jobs:
       node_js:
         - stable
       addons:
+        firefox: "66.0"
         apt:
          sources:
            - ubuntu-toolchain-r-test
@@ -70,13 +71,9 @@ jobs:
       after_success:
         - bash $HOME/build/GrepDev/kitchen-mobile/prepare-apk.sh
         - sudo apt-get install xauth
-        - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        - echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-        - sudo apt-get update
-        - sudo apt-get install google-chrome-stable
-        - npm install chromedriver
         - npm install -g protractor
         - cd $HOME
+        - npm install geckodriver
         - webdriver-manager update
         - webdriver-manager start &
         - sleep 10
@@ -84,7 +81,6 @@ jobs:
         - ionic serve &
         - sleep 300
         - cd $HOME/build/GrepDev/kitchen-mobile/src/protractor
-        - ping http://10.20.6.47:8100
         - protractor conf.js
 
       deploy:
