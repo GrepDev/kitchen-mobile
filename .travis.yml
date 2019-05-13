@@ -12,7 +12,7 @@ jobs:
         - npm install -g npm
       before_script:
         - npm cache clean -f
-        - npm install ionic 
+        - npm install ionic@4.10.4 --loglevel verbose
         - npm install cordova@6.0.0
         - cordova platform add ios
         - npm install @ionic/app-scripts@latest
