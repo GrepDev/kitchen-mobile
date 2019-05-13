@@ -11,6 +11,7 @@ jobs:
       install:
         - npm install -g npm
       before_script:
+        - npm cache clean -f
         - npm install ionic 
         - npm install cordova@6.0.0
         - cordova platform add ios
