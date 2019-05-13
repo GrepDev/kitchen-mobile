@@ -6,11 +6,11 @@ jobs:
       node_js:
         - stable
       before_install:
+        - rm -rf node_modules
+        - rm package-lock.json
         - npm i npm@^4 -g
         - mkdir www
       install:
-        - rm -rf node_modules
-        - rm package-lock.json
         - npm install -g npm
       before_script:
         - npm cache clean -f
