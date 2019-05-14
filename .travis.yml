@@ -6,16 +6,14 @@ jobs:
       node_js:
         - stable
       before_install:
+        - ls -l
         - rm package-lock.json
         - npm i npm@^4 -g
         - mkdir www
       install:
-        - npm init &
-        - sleep 15
         - npm install @angular/core@7.2.15
         - npm install -g npm
       before_script:
-        - npm cache clean -f
         - npm install ionic
         - npm install cordova@6.0.0
         - cordova platform add ios
