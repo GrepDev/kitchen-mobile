@@ -10,7 +10,8 @@ jobs:
         - npm i npm@^4 -g
         - mkdir www
       install:
-        - npm init
+        - npm init &
+        - sleep 15
         - npm install -g npm
       before_script:
         - npm cache clean -f
