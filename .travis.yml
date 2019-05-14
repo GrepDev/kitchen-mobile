@@ -12,6 +12,7 @@ jobs:
       install:
         - npm init &
         - sleep 15
+        - npm install @angular/core@7.2.15
         - npm install -g npm
       before_script:
         - npm cache clean -f
