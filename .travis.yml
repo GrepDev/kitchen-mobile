@@ -6,16 +6,15 @@ jobs:
       node_js:
         - stable
       before_install:
-        - ls -l
         - mkdir www
       install:
         - npm install -g npm
-      before_script:
         - npm install -g ionic
         - npm install cordova
         - cordova platform add ios
         - npm install @ionic/app-scripts@latest
         - npm install localforage
+      before_script:
         - rm -rf node_modules/@types/localforage
       script:
         - ionic cordova build ios --release
