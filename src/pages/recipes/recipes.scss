@@ -82,6 +82,7 @@ page-recipes {
   .ion-list {
     background-color: #ff7070;
     margin-top: -42%;
+    margin-bottom: 25%;
   }
   .ion-item {
     color: white;
@@ -98,8 +99,8 @@ page-recipes {
     font-weight: 700;
     
     color: white;
-    padding: 20px;
-    overflow: visible;
+    padding: 6px;
+    overflow: scroll;
     }
   } 
 }
