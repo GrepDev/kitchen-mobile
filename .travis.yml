@@ -7,7 +7,6 @@ jobs:
         - stable
       before_install:
         - ls -l
-        - rm package-lock.json
         - npm i npm@^4 -g
         - mkdir www
       install:
