@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HelpPage } from "../pages/help/help";
@@ -14,8 +13,8 @@ import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
 import { File } from '@ionic-native/file';
 import { IonicStorageModule } from '@ionic/storage';
 import { PreferencesPage } from '../pages/preferences/preferences';
-import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator';
 import { SQLite } from '@ionic-native/sqlite';
+import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator';
 import { RecipesSingleton } from '../pages/recipes/recipesSingleton';
 
 @NgModule({
@@ -52,7 +51,7 @@ import { RecipesSingleton } from '../pages/recipes/recipesSingleton';
     File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
-    RecipesSingleton 
+    RecipesSingleton
   ]
 })
 export class AppModule {}

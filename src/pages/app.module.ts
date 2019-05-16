@@ -1,22 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpModule, JsonpModule } from '@angular/http';
-import { StatusBar } from '@ionic-native/status-bar';
-
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { HelpPage } from "../pages/help/help";
-import { IngredientsPage } from '../pages/ingredients/ingredients';
-import RecipesPage from '../pages/recipes/recipes';
-import { EdamamApiProvider } from '../providers/edamam-api/edamam-api';
-import { File } from '@ionic-native/file';
-import { IonicStorageModule } from '@ionic/storage';
-import { PreferencesPage } from '../pages/preferences/preferences';
-import { SQLite } from '@ionic-native/sqlite';
-import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator';
-import { RecipesSingleton } from './recipes/recipesSingleton';
+import { BrowserModule } from '../../node_modules/@angular/platform-browser'
+import { ErrorHandler, NgModule } from '../../node_modules/@angular/core'
+import { IonicApp, IonicErrorHandler, IonicModule } from '../../node_modules/ionic-angular'
+import { SplashScreen } from '../../node_modules/@ionic-native/splash-screen'
+import { HttpModule, JsonpModule } from '../../node_modules/@angular/http'
+import { StatusBar } from '../../node_modules/@ionic-native/status-bar'
+import { MyApp } from './app.component'
+import { HomePage } from '../pages/home/home'
+import { HelpPage } from '../pages/help/help'
+import { IngredientsPage } from '../pages/ingredients/ingredients'
+import RecipesPage from '../pages/recipes/recipes'
+import { EdamamApiProvider } from '../providers/edamam-api/edamam-api'
+import { File } from '../../node_modules/@ionic-native/file'
+import { IonicStorageModule } from '../../node_modules/@ionic/storage'
+import { PreferencesPage } from '../pages/preferences/preferences'
+import { SQLite } from '../../node_modules/@ionic-native/sqlite'
+import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator'
+import { RecipesSingleton } from '../pages/recipes/recipesSingleton'
 
 @NgModule({
   declarations: [
