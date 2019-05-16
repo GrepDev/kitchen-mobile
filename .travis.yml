@@ -1,5 +1,27 @@
 jobs:
   include:
+    - stage: build app on ios
+      os: osx
+      language: node_js
+      node_js:
+        - stable
+      before_install:
+        - npm i npm@^4 -g
+        - mkdir www
+      install:
+        - npm install -g npm
+      before_script:
+        - npm install ionic 
+        - npm install cordova@6.0.0
+        - cordova platform add ios
+        - npm install @ionic/app-scripts@latest
+        - npm install localforage
+        - rm -rf node_modules/@types/localforage
+      script:
+        - ionic cordova build ios --release
+      notifications:
+        email:
+          - laurentiu.raducu@gmail.com
     - stage: build app on android
       os: linux
       language: node_js
