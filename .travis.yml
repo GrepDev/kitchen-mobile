@@ -6,11 +6,12 @@ jobs:
       node_js:
         - stable
       before_install:
+        - npm i npm@^4 -g
         - mkdir www
       install:
         - npm install -g npm
-        - npm install -g ionic
-        - npm install cordova@8.0.0 
+        - npm install -g ionic 
+        - npm install cordova@8.0.0
         - cordova platform add ios
         - npm install @ionic/app-scripts@latest
         - npm install localforage
