@@ -11,7 +11,7 @@ jobs:
       install:
         - npm install -g npm
         - npm install -g ionic 
-        - npm install cordova@8.0.0
+        - npm install -g cordova@8.1.2
         - cordova platform add ios
         - npm install @ionic/app-scripts@latest
         - npm install localforage
@@ -47,7 +47,7 @@ jobs:
       install:
         - npm install -g npm
         - npm install -g ionic 
-        - npm install cordova@8.0.0 
+        - npm install -g cordova@8.1.2
         - cordova platform add android
         - npm install @ionic/app-scripts@latest
         - npm install localforage
