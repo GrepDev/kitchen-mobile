@@ -16,6 +16,8 @@ import { PreferencesPage } from '../pages/preferences/preferences'
 import { SQLite } from '../../node_modules/@ionic-native/sqlite'
 import { NutritionCalculatorComponent } from '../components/nutrition-calculator/nutrition-calculator'
 import { RecipesSingleton } from '../pages/recipes/recipesSingleton'
+import { HelpModalPage } from './help-modal/help-modal';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { RecipesSingleton } from '../pages/recipes/recipesSingleton'
     RecipesPage,
     HelpPage,
     PreferencesPage,
-    NutritionCalculatorComponent
+    NutritionCalculatorComponent,
+    HelpModalPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { RecipesSingleton } from '../pages/recipes/recipesSingleton'
     IngredientsPage,
     RecipesPage,
     HelpPage,
-    PreferencesPage
+    PreferencesPage,
+    HelpModalPage
   ],
   providers: [
     StatusBar,

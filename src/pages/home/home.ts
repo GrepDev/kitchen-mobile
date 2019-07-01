@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { HelpPage } from "../help/help";
 import { IngredientsPage } from '../ingredients/ingredients';
 import RecipesPage from '../recipes/recipes';
+import localForage from "localforage";
+import { HelpModalPage } from '../help-modal/help-modal';
+
 
 @Component({
   selector: 'page-home',
@@ -11,8 +14,22 @@ import RecipesPage from '../recipes/recipes';
 export class HomePage {
   email: string;
   password: string;
+  public localStorage: LocalForage; 
+  public firstTimeRunString: string;
+  public firstTimeRun = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController) {
+  }
+
+  ionViewWillEnter(){
+    localForage.getItem(this.firstTimeRunString).then((value)=>{
+      console.log("Value is: " + value);
+      if(value == null){
+        this.openModalWindow();
+        localForage.setItem(this.firstTimeRunString, true );
+      }
+    })
   }
 
   goToRegister() {
@@ -23,5 +40,10 @@ export class HomePage {
   }
   goToRecipes() {
     this.navCtrl.push(RecipesPage);
+  }
+
+  openModalWindow(){
+    let myModal = this.modalCtrl.create(HelpModalPage);
+    myModal.present();
   }
 }
