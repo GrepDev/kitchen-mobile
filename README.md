@@ -1,5 +1,7 @@
 # kitchen-mobile
 
+This is a simple ionic app meant to take a list of ingredients and return a recipe. The app has been published under the name of Edesia - a Food App! on the Google Play store. A link to the app can be found here: https://play.google.com/store/apps/details?id=edesia.food.app&gl=US.
+
 install ionic global
 ```
 $ npm install -g ionic
